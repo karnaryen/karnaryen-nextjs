@@ -23,7 +23,7 @@ export default function EducationPage() {
         <Image
           src={mainEducation.image}
           alt=""
-          className="size-24 shrink-0 rounded-full bg-white object-contain p-1"
+          className="size-24 shrink-0 object-contain p-1"
         />
         <div>
           <p className="text-sm font-medium text-muted-foreground">{mainEducation.years}</p>

@@ -19,7 +19,7 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
       <Image
         src={course.image}
         alt=""
-        className="size-12 shrink-0 rounded-full bg-white object-cover"
+        className="size-12 shrink-0 rounded-full bg-white object-contain p-1"
       />
       <span className="min-w-0">
         <span className="block text-xs font-medium text-muted-foreground">

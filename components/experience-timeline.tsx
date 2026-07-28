@@ -33,7 +33,7 @@ export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
               alt=""
               fill
               sizes="60px"
-              className="rounded-full bg-white object-cover"
+              className="rounded-full bg-white object-contain p-1.5"
             />
           }
           iconStyle={{
