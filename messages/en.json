@@ -130,6 +130,7 @@
   "EducationPage": {
     "title": "Education",
     "coursesTitle": "Courses & Certificates",
+    "mainTitle": "Academic Background",
     "main": {
       "mai": {
         "institution": "Moscow Aviation Institute (State University of Aerospace Technologies)",
