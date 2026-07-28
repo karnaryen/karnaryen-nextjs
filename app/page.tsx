@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
+import { RevealGrid } from '@/components/reveal-grid';
 import { TechStack } from '@/components/tech-stack';
 import mePhoto from '@/public/me.webp';
 
@@ -28,10 +29,12 @@ export default function Home() {
       </section>
 
       <section className="mt-14 lg:mt-20">
-        <h2 className="text-center text-2xl font-semibold text-foreground">
-          {t('techStackTitle')}
-        </h2>
-        <TechStack className="mt-8" />
+        <RevealGrid>
+          <h2 className="text-center text-2xl font-semibold text-foreground">
+            {t('techStackTitle')}
+          </h2>
+          <TechStack className="mt-8" />
+        </RevealGrid>
       </section>
     </main>
   );
