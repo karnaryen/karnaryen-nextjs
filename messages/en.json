@@ -189,6 +189,18 @@
     "playAgain": "Play again",
     "tryAgain": "Try again"
   },
+  "TicTacToeGame": {
+    "player1": "Player 1",
+    "player2": "Player 2",
+    "playerNameLabel": "Name of player {symbol}",
+    "edit": "Edit",
+    "save": "Save",
+    "gameOver": "Game Over!",
+    "won": "{winner} won!",
+    "draw": "It's a draw!",
+    "rematch": "Rematch!",
+    "logEntry": "{player} selected {row}, {col}"
+  },
   "Footer": {
     "copyright": "© karnaryen.com 2026"
   }

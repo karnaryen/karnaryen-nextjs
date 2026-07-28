@@ -1,0 +1,277 @@
+/*
+ * Ported from the legacy site (projectTicTakToe.css). The original styles were
+ * global id selectors on a full-page layout; here they are scoped to this
+ * module and the page background is a rounded panel instead of the whole page.
+ */
+.ticTacToe {
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  color: #46432f;
+  border-radius: 1rem;
+  padding: 1rem 1rem 2rem;
+  overflow: hidden;
+}
+
+.gameContainer {
+  max-width: 45rem;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 6px;
+  background: linear-gradient(#383624, #282617);
+  box-shadow: 0 0 20px rgb(0 0 0 / 0.5);
+  position: relative;
+  color: beige;
+}
+
+.players {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.players li {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  border: 2px solid transparent;
+}
+
+.players li.active {
+  border-color: #f6e35a;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.players li.active .playerName,
+.players li.active .playerSymbol {
+  color: #f6e35a;
+}
+
+.players button {
+  width: 3rem;
+  border: none;
+  background: none;
+  color: #c3ba78;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+  text-align: center;
+}
+
+.players button:hover {
+  color: #f8ca31;
+}
+
+.player {
+  border: 2px solid transparent;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.playerName {
+  display: inline-block;
+  width: 10rem;
+  font-size: 1rem;
+  color: #e1dec7;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.player input {
+  font: inherit;
+  font-size: 1rem;
+  width: 10rem;
+  border: none;
+  padding: 0.5rem;
+  animation: pulse-text 2s infinite;
+  background-color: #46432f;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.playerSymbol {
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: #e1dec7;
+}
+
+.gameBoard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  padding: 0;
+  flex-direction: column;
+  list-style: none;
+}
+
+.gameBoard ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gameBoard button {
+  width: 8rem;
+  height: 8rem;
+  border: none;
+  background: beige;
+  color: #3f3b00;
+  font-size: 5rem;
+  cursor: pointer;
+  font-family: var(--font-display), cursive;
+  padding: 1rem;
+}
+
+.gameOver {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  background-color: rgb(40 38 23 / 0.95);
+  animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
+}
+
+.gameOver h2 {
+  font-family: var(--font-display), cursive;
+  font-size: 4rem;
+  text-align: center;
+  color: #fcd256;
+  margin: 0;
+}
+
+.gameOver p {
+  font-size: 2rem;
+  text-align: center;
+  color: #e1dec7;
+}
+
+.gameOver button {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  background: none;
+  border: 2px solid #fcd256;
+  color: #fcd256;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s, color 0.2s;
+  box-shadow: 0 0 8px rgb(255 187 0 / 0.4);
+}
+
+.gameOver button:hover {
+  background: #fcd256;
+  color: #3f3b00;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255 187 0 / 0.8);
+}
+
+.log {
+  max-width: 20rem;
+  color: #3f3b00;
+  list-style: none;
+  margin: 2rem auto 0;
+  padding: 0;
+  text-align: center;
+}
+
+.log li {
+  border-radius: 4px;
+  animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  margin: 0.75rem;
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-text {
+  0% {
+    color: #e1dec7;
+  }
+  50% {
+    color: #9f9d83;
+  }
+  100% {
+    color: #e1dec7;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgb(246 227 90 / 0.4);
+  }
+  50% {
+    border-color: #f8c031;
+    box-shadow: 0 0 0 0.5rem rgb(248 165 49 / 0);
+  }
+  100% {
+    border-color: #f6e35a;
+    box-shadow: 0 0 0 0 rgb(246 227 90 / 0);
+  }
+}
+
+/* Fancy animation for showing the "Game Over" element */
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (width < 760px) {
+  .gameBoard button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .players {
+    flex-direction: column;
+  }
+
+  .players li {
+    width: 100%;
+  }
+
+  .players button {
+    padding: 0;
+  }
+}

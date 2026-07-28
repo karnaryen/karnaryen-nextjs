@@ -189,6 +189,18 @@
     "playAgain": "Opnieuw spelen",
     "tryAgain": "Probeer opnieuw"
   },
+  "TicTacToeGame": {
+    "player1": "Speler 1",
+    "player2": "Speler 2",
+    "playerNameLabel": "Naam van speler {symbol}",
+    "edit": "Bewerken",
+    "save": "Opslaan",
+    "gameOver": "Spel afgelopen!",
+    "won": "{winner} heeft gewonnen!",
+    "draw": "Het is gelijkspel!",
+    "rematch": "Revanche!",
+    "logEntry": "{player} koos {row}, {col}"
+  },
   "Footer": {
     "copyright": "© karnaryen.com 2026"
   }
