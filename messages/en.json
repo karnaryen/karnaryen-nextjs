@@ -29,7 +29,9 @@
     "role": "Frontend developer",
     "photoAlt": "Photo of Natalia Karaseva",
     "intro1": "Hello, my name is Natalia. I'm a frontend developer passionate about creating clean, user-friendly, and responsive web interfaces. I'm working with HTML, CSS, Tailwind CSS, JavaScript, TypeScript, Angular, and React. I enjoy building web applications that people find easy to use, and I value being part of projects that have a meaningful impact. My recent experience includes developing web applications for the healthcare sector — helping medical staff, children in intensive care units and families stay connected through intuitive, modern interfaces.",
-    "intro2": "I find the most inspiration in creating and refining intuitive web interfaces while continually developing my frontend skills. Feel free to check out my projects below!",
+    "intro2": "I find the most inspiration in creating and refining intuitive web interfaces while continually developing my frontend skills.",
+    "ctaProjects": "View my projects",
+    "ctaContact": "Get in touch",
     "techStackTitle": "Tech stack"
   },
   "ProjectsPage": {

@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { RevealGrid } from '@/components/reveal-grid';
 import { TechStack } from '@/components/tech-stack';
+import { buttonVariants } from '@/components/ui/button';
 import mePhoto from '@/public/me.webp';
 
 export default function Home() {
@@ -25,6 +27,14 @@ export default function Home() {
         <div className="space-y-4 leading-relaxed text-muted-foreground">
           <p>{t('intro1')}</p>
           <p>{t('intro2')}</p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Link href="/projects" className={buttonVariants({ size: 'lg' })}>
+              {t('ctaProjects')}
+            </Link>
+            <Link href="/contacts" className={buttonVariants({ variant: 'outline', size: 'lg' })}>
+              {t('ctaContact')}
+            </Link>
+          </div>
         </div>
       </section>
 

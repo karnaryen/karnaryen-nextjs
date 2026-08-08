@@ -29,7 +29,9 @@
     "role": "Frontend-ontwikkelaar",
     "photoAlt": "Foto van Natalia Karaseva",
     "intro1": "Hallo, mijn naam is Natalia. Ik ben een frontendontwikkelaar met een passie voor het creëren van gebruiksvriendelijke, responsieve en strakke webinterfaces. Ik werk met HTML, CSS, Tailwind CSS, JavaScript, TypeScript, Angular en React. Ik geniet van het bouwen van webapplicaties die mensen gemakkelijk kunnen gebruiken, en ik vind het belangrijk om deel uit te maken van projecten die een betekenisvolle impact hebben. Mijn recente ervaring omvat het ontwikkelen van webapplicaties voor de zorgsector — waarmee medisch personeel, kinderen op de intensivecareafdelingen en families verbonden blijven via intuïtieve, moderne interfaces.",
-    "intro2": "Ik haal de meeste inspiratie uit het creëren en verfijnen van intuïtieve webinterfaces, terwijl ik mijn frontendvaardigheden voortdurend verder ontwikkel. Bekijk gerust mijn projecten hieronder!",
+    "intro2": "Ik haal de meeste inspiratie uit het creëren en verfijnen van intuïtieve webinterfaces, terwijl ik mijn frontendvaardigheden voortdurend verder ontwikkel.",
+    "ctaProjects": "Bekijk mijn projecten",
+    "ctaContact": "Neem contact op",
     "techStackTitle": "Tech stack"
   },
   "ProjectsPage": {
