@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { tech, type TechId, techStackIds } from '@/data/tech-stack';
+import { tech, type TechId, type TechInfo, techStackIds } from '@/data/tech-stack';
 import { cn } from '@/lib/utils';
 
 interface TechBadgeProps {
@@ -10,7 +10,7 @@ interface TechBadgeProps {
 }
 
 export function TechBadge({ id, size = 'md', className }: TechBadgeProps) {
-  const { name, icon } = tech[id];
+  const { name, icon, invertOnDark }: TechInfo = tech[id];
 
   return (
     <span
@@ -25,7 +25,11 @@ export function TechBadge({ id, size = 'md', className }: TechBadgeProps) {
         alt=""
         width={64}
         height={64}
-        className={cn('w-auto', size === 'md' ? 'h-12 sm:h-16' : 'h-8 sm:h-10')}
+        className={cn(
+          'w-auto',
+          size === 'md' ? 'h-12 sm:h-16' : 'h-8 sm:h-10',
+          invertOnDark && 'dark:invert',
+        )}
       />
       {name}
     </span>
