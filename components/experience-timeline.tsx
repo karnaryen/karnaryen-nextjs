@@ -38,7 +38,7 @@ export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
           }
           iconStyle={{
             background: '#fff',
-            boxShadow: '0 0 0 4px var(--primary), 0 3px 8px rgb(0 0 0 / 0.15)',
+            boxShadow: '0 0 0 2px var(--primary), 0 3px 8px rgb(0 0 0 / 0.15)',
           }}
           contentStyle={{
             background: 'var(--card)',
