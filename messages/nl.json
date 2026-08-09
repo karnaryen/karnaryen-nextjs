@@ -5,6 +5,7 @@
     "nav": {
       "about": "Over mij",
       "projects": "Projecten",
+      "blog": "Blog",
       "experience": "Ervaring",
       "education": "Opleiding",
       "contacts": "Contact"
@@ -98,6 +99,14 @@
         "description": "Geheugenspel met emoji-paren en een timer."
       }
     }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "intro": "Notities over frontend werk — development, design systems, tooling en UI bouwen met AI.",
+    "empty": "Nog geen berichten.",
+    "latestTitle": "Laatste berichten",
+    "viewAll": "Bekijk alle berichten",
+    "backToBlog": "Terug naar blog"
   },
   "ExperiencePage": {
     "title": "Ervaring",

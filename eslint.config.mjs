@@ -68,6 +68,8 @@ export default tseslint.config(
           varsIgnorePattern: '^_',
           args: 'after-used',
           argsIgnorePattern: '^_',
+          // Allows `const { secret, ...rest } = obj` to mean "everything but secret".
+          ignoreRestSiblings: true,
         },
       ],
 
@@ -91,6 +93,8 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx}'],
     rules: {
       'no-unused-vars': 'off',
+      // Same allowance as the JS rule above: `const { secret, ...rest } = obj`.
+      '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
       '@typescript-eslint/no-non-null-assertion': 'warn',
     },
   },

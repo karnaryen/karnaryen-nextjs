@@ -1,0 +1,42 @@
+---
+title: How I build UI with AI
+description: Generating UI from a design only works if the design is structured for it. Most of the work sits on the Figma side; the AI step comes last.
+date: 2026-08-08
+tags: [Figma, Design tokens, AI]
+---
+
+Generating UI from a design only works if the design is structured for it. Most of the work sits on the Figma side; the AI step comes last.
+
+## Design tokens in three layers
+
+Primitive tokens hold the raw values. Theme tokens sit on top and switch per brand. Semantic tokens reference primitives or theme values and switch between light and dark. Components use semantic tokens only.
+
+<ArticleTokenChain primitive="raw values" theme="per brand" semantic="light / dark" />
+
+The point of the middle layer is that a brand switch never touches a component. Only the theme collection changes, and everything downstream resolves to the new values.
+
+## Components with explicit properties
+
+Each Figma component exposes properties, and its variants show how it renders for each combination of values. That variant set is the contract the React component has to match. Where the implementation differs from the Figma structure, Code Connect reconciles the two.
+
+## Figma Code Connect
+
+Code Connect maps every Figma component to its React implementation through a `*.figma.ts` file kept next to the component. Figma then shows the real code snippet instead of generic markup, and the AI reads that mapping to generate code that fits the existing API.
+
+This is the step that changes generation quality the most. Without it, a model infers an API from the visual layout and invents prop names. With it, the mapping is explicit.
+
+## A predictable file structure
+
+Every product file is linked to the shared component library. Each page is a Figma section with mobile, tablet, and desktop frames, carries annotations, and uses tokens rather than raw colour values.
+
+The annotations matter more than they look. They carry the information a static frame cannot show: what is interactive, what the empty and loading states are, and how a layout should behave between breakpoints.
+
+## Two Claude Code workflows
+
+One workflow builds components, the other builds pages. Both run skills that read the tokens, the Figma structure, and the annotations, plan the architecture, and then write the code against the project's React conventions. A separate agent reviews the result.
+
+Reviewing generated code is a real step, not a formality. The agent catches the same things a colleague would: duplicated markup that should be a component, tokens bypassed in favour of a literal value, missing keyboard handling.
+
+## The result
+
+Component development moved from days to hours. The saving does not come from the model writing faster — it comes from removing the ambiguity it would otherwise have to guess at.

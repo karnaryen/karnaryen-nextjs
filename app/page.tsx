@@ -2,9 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
+import { LatestPosts } from '@/components/latest-posts';
 import { RevealGrid } from '@/components/reveal-grid';
 import { TechStack } from '@/components/tech-stack';
 import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import mePhoto from '@/public/me.webp';
 
 export default function Home() {
@@ -28,10 +30,13 @@ export default function Home() {
           <p>{t('intro1')}</p>
           <p>{t('intro2')}</p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <Link href="/projects" className={buttonVariants({ size: 'lg' })}>
+            <Link href="/projects" className={cn(buttonVariants({ size: 'lg' }))}>
               {t('ctaProjects')}
             </Link>
-            <Link href="/contacts" className={buttonVariants({ variant: 'outline', size: 'lg' })}>
+            <Link
+              href="/contacts"
+              className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+            >
               {t('ctaContact')}
             </Link>
           </div>
@@ -45,6 +50,10 @@ export default function Home() {
           </h2>
           <TechStack className="mt-8" />
         </RevealGrid>
+      </section>
+
+      <section className="mt-14 lg:mt-20">
+        <LatestPosts />
       </section>
     </main>
   );

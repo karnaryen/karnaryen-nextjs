@@ -1,0 +1,42 @@
+---
+title: Hoe ik UI bouw met AI
+description: UI genereren uit een design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma; de AI-stap komt als laatste.
+date: 2026-08-08
+tags: [Figma, Design tokens, AI]
+---
+
+UI genereren uit een design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma; de AI-stap komt als laatste.
+
+## Design tokens in drie lagen
+
+Primitive tokens bevatten de ruwe waarden. Theme tokens liggen daarboven en wisselen per merk. Semantic tokens verwijzen naar primitives of theme-waarden en wisselen tussen licht en donker. Componenten gebruiken alleen semantic tokens.
+
+<ArticleTokenChain primitive="ruwe waarden" theme="per merk" semantic="licht / donker" />
+
+De middelste laag zorgt ervoor dat je bij een ander merk niets in een component hoeft te veranderen. Alleen de theme-collectie wisselt, en de rest volgt vanzelf.
+
+## Componenten met duidelijke properties
+
+Elk Figma-component heeft properties. De varianten laten zien hoe het component eruitziet bij elke combinatie van waarden. Die varianten zijn de afspraak waar het React-component zich aan moet houden. Wijkt de code af van de Figma-structuur, dan brengt Code Connect beide bij elkaar.
+
+## Figma Code Connect
+
+Code Connect koppelt elk Figma-component aan de React-code via een `*.figma.ts`-bestand naast het component. Figma laat dan de echte code zien in plaats van algemene markup, en de AI gebruikt die koppeling om code te schrijven die past bij de bestaande API.
+
+Deze stap heeft de meeste invloed op de kwaliteit van de gegenereerde code. Zonder Code Connect leidt een model de API af uit het uiterlijk en verzint het zelf namen voor props. Met Code Connect ligt de koppeling vast.
+
+## Een vaste bestandsstructuur
+
+Elk productbestand is gekoppeld aan de gedeelde componentenbibliotheek. Elke pagina is een Figma-sectie met frames voor mobiel, tablet en desktop, heeft annotaties en gebruikt tokens in plaats van losse kleurwaarden.
+
+Die annotaties zijn belangrijker dan ze lijken. Ze bevatten informatie die je niet in een statisch frame ziet: wat klikbaar is, hoe een lege of ladende staat eruitziet, en hoe een layout zich gedraagt tussen breakpoints.
+
+## Twee workflows in Claude Code
+
+De ene workflow bouwt componenten, de andere bouwt pagina's. Beide gebruiken skills die de tokens, de Figma-structuur en de annotaties lezen, de architectuur bepalen en daarna de code schrijven volgens de React-afspraken van het project. Een aparte agent controleert het resultaat.
+
+Die controle is een echte stap, geen formaliteit. De agent ziet dezelfde dingen als een collega: dubbele markup die een component had moeten zijn, een kleur die zonder token is ingevuld, of een knop die niet met het toetsenbord werkt.
+
+## Het resultaat
+
+Een component bouwen kost nu uren in plaats van dagen. Die winst komt niet doordat het model sneller typt, maar doordat het niets meer hoeft te raden.

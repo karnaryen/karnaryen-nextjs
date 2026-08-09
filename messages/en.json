@@ -5,6 +5,7 @@
     "nav": {
       "about": "About me",
       "projects": "Projects",
+      "blog": "Blog",
       "experience": "Experience",
       "education": "Education",
       "contacts": "Contacts"
@@ -98,6 +99,14 @@
         "description": "Memory game with emoji pairs and a timer."
       }
     }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "intro": "Notes on frontend work — development, design systems, tooling, and building UI with AI.",
+    "empty": "No posts yet.",
+    "latestTitle": "Latest posts",
+    "viewAll": "View all posts",
+    "backToBlog": "Back to blog"
   },
   "ExperiencePage": {
     "title": "Experience",
