@@ -43,7 +43,7 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
 
   if (!course.href) {
     return (
-      <div style={{ '--reveal-index': index } as React.CSSProperties} className={className}>
+      <div style={{ '--reveal-index': index }} className={className}>
         {content}
       </div>
     );
@@ -55,7 +55,7 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={name}
-      style={{ '--reveal-index': index } as React.CSSProperties}
+      style={{ '--reveal-index': index }}
       className={`${className} transition-[border-color,box-shadow] duration-300 hover:border-primary/40 hover:shadow-md`}
     >
       {content}

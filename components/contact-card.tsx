@@ -17,7 +17,7 @@ export function ContactCard({ contact, index = 0 }: ContactCardProps) {
     <a
       href={contact.href}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      style={{ '--reveal-index': index } as React.CSSProperties}
+      style={{ '--reveal-index': index }}
       className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-primary/40 hover:shadow-md dark:shadow-lg dark:shadow-black/25"
     >
       <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">

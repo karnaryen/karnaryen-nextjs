@@ -22,7 +22,7 @@ export function SelfStudyProjectCard({ project, index = 0 }: SelfStudyProjectCar
 
   return (
     <article
-      style={{ '--reveal-index': index } as React.CSSProperties}
+      style={{ '--reveal-index': index }}
       className="flex flex-col items-center rounded-2xl border border-border bg-card p-5 text-center shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-primary/40 hover:shadow-md dark:shadow-lg dark:shadow-black/25"
     >
       {external ? (
