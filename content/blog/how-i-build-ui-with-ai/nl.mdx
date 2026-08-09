@@ -1,11 +1,15 @@
 ---
-title: Hoe ik UI bouw met AI
-description: UI genereren uit een design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma; de AI-stap komt als laatste.
-date: 2026-08-08
+title: Sneller UI genereren met een AI-ready Figma-design
+description: UI genereren uit een Figma-design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma; de AI-stap komt als laatste.
+date: 2026-06-08
 tags: [Figma, Design tokens, AI]
 ---
 
-UI genereren uit een design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma; de AI-stap komt als laatste.
+UI genereren uit een Figma-design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma, ruim voordat er AI aan te pas komt.
+
+Is een design of het design system niet klaar voor AI, dan komt de rekening bij het frontendteam terecht: dagen kwijt aan het corrigeren van tokens en hardcoded CSS-waarden, aan het herstructureren van componenten die nooit voor hergebruik zijn gemaakt, en aan het uitzoeken wat een rommelig Figma-bestand eigenlijk bedoelde. En een AI-model dat een ongestructureerd design krijgt, vult die gaten met gokwerk: de fouten zijn elke keer anders, en daardoor moeilijk te vinden en lastig te vertrouwen.
+
+De voorbereiding gebeurt dus in Figma, niet in de prompt. Hieronder staat wat er klaar moet staan voordat je iets laat genereren: hoe de design tokens zijn opgebouwd, hoe componenten hun properties vastleggen, hoe het design aan de code is gekoppeld, en hoe de bestanden zijn ingedeeld.
 
 ## Design tokens in drie lagen
 
@@ -14,6 +18,10 @@ Primitive tokens bevatten de ruwe waarden. Theme tokens liggen daarboven en wiss
 <ArticleTokenChain primitive="ruwe waarden" theme="per merk" semantic="licht / donker" />
 
 De middelste laag zorgt ervoor dat je bij een ander merk niets in een component hoeft te veranderen. Alleen de theme-collectie wisselt, en de rest volgt vanzelf.
+
+Dit werkt alleen als de tokens automatisch in de code terechtkomen. Elke Figma-variabele hoort bij één CSS-variabele, gegenereerd door een script in plaats van met de hand overgetypt — in dit geval een eigen Figma-plugin. Zo'n plugin zelf bouwen loont, omdat die de naamgeving en de structuur van de codebase kan volgen.
+
+Voegen designers een variabele toe, hernoemen ze er een of halen ze er een weg, dan komt die wijziging als diff in de repository binnen. Een frontend-ontwikkelaar bekijkt die wijziging en past de componenten aan die ervan afhangen. Juist die review maakt het verschil: er verandert niets stilletjes, en een hernoemde token wordt een regel in een pull request in plaats van een kleur die opeens nergens meer naar verwijst.
 
 ## Componenten met duidelijke properties
 
