@@ -1,50 +1,54 @@
 ---
 title: Sneller UI genereren met een AI-ready Figma-design
-description: UI genereren uit een Figma-design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma; de AI-stap komt als laatste.
+description: UI genereren uit een Figma-design werkt alleen als het design daar klaar voor is. Het meeste werk zit in Figma. De AI-stap komt als laatste.
 date: 2026-06-08
 tags: [Figma, Design tokens, AI]
 ---
 
-UI genereren uit een Figma-design werkt alleen als het design daarop is ingericht. Het meeste werk zit in Figma, ruim voordat er AI aan te pas komt.
+UI genereren uit een Figma-design werkt alleen als het design daar klaar voor is. Het meeste werk zit in Figma. Dat werk doe je ruim voordat AI iets genereert.
 
-Is een design of het design system niet klaar voor AI, dan komt de rekening bij het frontendteam terecht: dagen kwijt aan het corrigeren van tokens en hardcoded CSS-waarden, aan het herstructureren van componenten die nooit voor hergebruik zijn gemaakt, en aan het uitzoeken wat een rommelig Figma-bestand eigenlijk bedoelde. En een AI-model dat een ongestructureerd design krijgt, vult die gaten met gokwerk: de fouten zijn elke keer anders, en daardoor moeilijk te vinden en lastig te vertrouwen.
+Sinds maart 2026 is [het canvas van Figma open voor AI-agents](https://www.figma.com/blog/the-figma-canvas-is-now-open-to-agents/). Daardoor kunnen designers een AI-ready design sneller opzetten en aanpassen dan vroeger.
 
-De voorbereiding gebeurt dus in Figma, niet in de prompt. Hieronder staat wat er klaar moet staan voordat je iets laat genereren: hoe de design tokens zijn opgebouwd, hoe componenten hun properties vastleggen, hoe het design aan de code is gekoppeld, en hoe de bestanden zijn ingedeeld.
+Het goede nieuws: misschien ben je al bijna klaar. Houden je designers de structuur van hun Figma-bestanden netjes en consistent? En gebruiken ze semantische design tokens? [Figma legt uit hoe dat werkt.](https://www.figma.com/resource-library/design-tokens/#step-2-connect-your-semantic-tokens) Dan is het meeste voorwerk al gedaan. Er is dan nog één ding nodig: een brug tussen Figma en de code. De CSS-variabelen moeten automatisch uit Figma komen. Een agent begrijpt een vaste structuur namelijk goed.
+
+Maar in veel bedrijven keken designers vroeger niet naar de binnenkant van een Figma-bestand. Frontend-ontwikkelaars bekeken het design met het oog. Ze zochten ruwe waarden op, of de tokens die er toevallig waren. Daarna schreven ze code met de tools en libraries die het project al had. Vaak moesten ze zelf een herbruikbare structuur bedenken. Ze zochten dezelfde waarden, tokens en componenten bij elkaar in rommelige bestanden. De rekening kwam bij het frontendteam. Ontwikkelaars waren dagen bezig: tokens en hardcoded CSS-waarden corrigeren, componenten ombouwen die niet herbruikbaar waren, en uitzoeken wat dat rommelige Figma-bestand eigenlijk bedoelde. En een AI-model dat een ongestructureerd design krijgt, vult die gaten met gokwerk. De fouten zijn elke keer anders. Daardoor gaat het werk juist langzamer.
+
+De voorbereiding gebeurt dus in Figma, niet in de prompt. Hieronder lees je wat er klaar moet zijn voordat AI iets genereert: hoe je design tokens opbouwt, hoe componenten hun properties vastleggen, hoe je het design aan de code koppelt, en hoe je de bestanden indeelt.
 
 ## Design tokens in drie lagen
 
-Primitive tokens bevatten de ruwe waarden. Theme tokens liggen daarboven en wisselen per merk. Semantic tokens verwijzen naar primitives of theme-waarden en wisselen tussen licht en donker. Componenten gebruiken alleen semantic tokens.
+Primitive tokens bevatten de ruwe waarden. Theme tokens liggen daar bovenop en wisselen per merk. Semantic tokens verwijzen naar primitives of theme-waarden en wisselen tussen licht en donker. Componenten gebruiken alleen semantic tokens.
 
 <ArticleTokenChain primitive="ruwe waarden" theme="per merk" semantic="licht / donker" />
 
-De middelste laag zorgt ervoor dat je bij een ander merk niets in een component hoeft te veranderen. Alleen de theme-collectie wisselt, en de rest volgt vanzelf.
+De middelste laag is belangrijk. Werk je voor een ander merk? Dan verander je niets in de componenten. Alleen de theme-collectie wisselt, en de rest volgt vanzelf.
 
-Dit werkt alleen als de tokens automatisch in de code terechtkomen. Elke Figma-variabele hoort bij één CSS-variabele, gegenereerd door een script in plaats van met de hand overgetypt — in dit geval een eigen Figma-plugin. Zo'n plugin zelf bouwen loont, omdat die de naamgeving en de structuur van de codebase kan volgen.
+Dit werkt alleen als de tokens automatisch in de code komen. Elke Figma-variabele hoort bij één CSS-variabele. Een script maakt die variabelen, je typt ze niet zelf over. In dit geval doet een eigen Figma-plugin dat werk. Zo'n plugin zelf bouwen loont, want hij volgt precies de namen en de structuur van je code.
 
-Voegen designers een variabele toe, hernoemen ze er een of halen ze er een weg, dan komt die wijziging als diff in de repository binnen. Een frontend-ontwikkelaar bekijkt die wijziging en past de componenten aan die ervan afhangen. Juist die review maakt het verschil: er verandert niets stilletjes, en een hernoemde token wordt een regel in een pull request in plaats van een kleur die opeens nergens meer naar verwijst.
+Designers voegen een variabele toe, geven er een andere naam of halen er een weg. Die wijziging komt dan als diff in de repository. Frontend-ontwikkelaars bekijken de wijziging en passen de componenten aan die de token gebruiken. Juist die review is belangrijk. Er verandert niets stiekem. Een token met een nieuwe naam wordt een regel in een pull request. Anders zie je alleen een kleur die het opeens niet meer doet.
 
 ## Componenten met duidelijke properties
 
-Elk Figma-component heeft properties. De varianten laten zien hoe het component eruitziet bij elke combinatie van waarden. Die varianten zijn de afspraak waar het React-component zich aan moet houden. Wijkt de code af van de Figma-structuur, dan brengt Code Connect beide bij elkaar.
+Elk Figma-component heeft properties. De varianten laten zien hoe het component eruitziet bij elke combinatie van waarden. Die varianten zijn een afspraak, en het React-component moet zich daaraan houden. Wijkt de code af van de Figma-structuur? Dan brengt Code Connect beide bij elkaar.
 
 ## Figma Code Connect
 
-Code Connect koppelt elk Figma-component aan de React-code via een `*.figma.ts`-bestand naast het component. Figma laat dan de echte code zien in plaats van algemene markup, en de AI gebruikt die koppeling om code te schrijven die past bij de bestaande API.
+Code Connect koppelt elk Figma-component aan de React-code. Dat gebeurt in een `*.figma.ts`-bestand naast het component. Figma laat dan de echte code zien, niet algemene markup. AI gebruikt die koppeling en schrijft code die past bij de API die je al hebt.
 
-Deze stap heeft de meeste invloed op de kwaliteit van de gegenereerde code. Zonder Code Connect leidt een model de API af uit het uiterlijk en verzint het zelf namen voor props. Met Code Connect ligt de koppeling vast.
+Deze stap heeft de meeste invloed op de kwaliteit van de code. Zonder Code Connect kijkt een model alleen naar het uiterlijk. Het bedenkt dan zelf namen voor props. Met Code Connect ligt de koppeling vast.
 
 ## Een vaste bestandsstructuur
 
-Elk productbestand is gekoppeld aan de gedeelde componentenbibliotheek. Elke pagina is een Figma-sectie met frames voor mobiel, tablet en desktop, heeft annotaties en gebruikt tokens in plaats van losse kleurwaarden.
+Elk productbestand is gekoppeld aan de gedeelde componentenbibliotheek. Elke pagina is een Figma-sectie met frames voor mobiel, tablet en desktop. Er staan annotaties bij, en de pagina gebruikt tokens in plaats van losse kleurwaarden.
 
-Die annotaties zijn belangrijker dan ze lijken. Ze bevatten informatie die je niet in een statisch frame ziet: wat klikbaar is, hoe een lege of ladende staat eruitziet, en hoe een layout zich gedraagt tussen breakpoints.
+Die annotaties zijn belangrijker dan ze lijken. Ze vertellen wat je in een statisch frame niet ziet. Wat is klikbaar? Hoe ziet een lege pagina eruit? Wat gebeurt er tijdens het laden? En hoe verandert de layout tussen breakpoints?
 
 ## Twee workflows in Claude Code
 
-De ene workflow bouwt componenten, de andere bouwt pagina's. Beide gebruiken skills die de tokens, de Figma-structuur en de annotaties lezen, de architectuur bepalen en daarna de code schrijven volgens de React-afspraken van het project. Een aparte agent controleert het resultaat.
+De ene workflow bouwt componenten, de andere bouwt pagina's. Beide gebruiken skills. Die skills lezen de tokens, de Figma-structuur en de annotaties. Daarna bepalen ze de architectuur en schrijven ze de code, volgens de React-afspraken van het project. Een aparte agent controleert het resultaat.
 
-Die controle is een echte stap, geen formaliteit. De agent ziet dezelfde dingen als een collega: dubbele markup die een component had moeten zijn, een kleur die zonder token is ingevuld, of een knop die niet met het toetsenbord werkt.
+Die controle is een echte stap, geen formaliteit. De agent ziet dezelfde dingen als een collega: dubbele markup die een component had moeten zijn, een kleur zonder token, of een knop die niet met het toetsenbord werkt.
 
 ## Het resultaat
 
-Een component bouwen kost nu uren in plaats van dagen. Die winst komt niet doordat het model sneller typt, maar doordat het niets meer hoeft te raden.
+Een component bouwen kost nu uren in plaats van dagen. Die winst komt niet doordat het model sneller typt. Die winst komt doordat het niets meer hoeft te raden.
