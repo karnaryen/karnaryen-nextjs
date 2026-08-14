@@ -7,7 +7,11 @@ tags: [Figma, Design tokens, AI]
 
 Generating UI from a Figma design only works if the design is structured for it. Much of the work sits on the Figma side, long before AI is involved.
 
-When a design and its design system are not ready for AI, the cost lands on the frontend team: days spent correcting tokens and hardcoded CSS values, restructuring components that were never built to be reused, and deciding what a messy Figma file was actually meant to express. And an AI model given an unstructured design fills those gaps by guessing, so the mistakes it makes are different every time — which makes them slow to spot and slower to trust.
+Since March 2026, [Figma has opened its canvas to AI agents](https://www.figma.com/blog/the-figma-canvas-is-now-open-to-agents/), which makes setting up and adjusting an AI-ready design faster than it used to be.
+
+The good news is that you may already be close. If your designers have kept the internal structure of their Figma files accurate and consistent, and have been working with semantic design tokens — [Figma documents the setup](https://www.figma.com/resource-library/design-tokens/#step-2-connect-your-semantic-tokens) — then most of the groundwork is done. What is still needed is a bridge between Figma and the frontend code: CSS variables generated automatically from Figma. A consistent structure is something agents read well.
+
+In many companies, though, the inside of a Figma file got little attention before AI arrived. Frontend developers judged the design visually, looked up raw values or whatever tokens happened to exist, and wrote code against the utilities and libraries already in the project. That often left them to invent the reusable structure themselves, hunting for repeating values, tokens, and components across chaotic files. The cost landed on the frontend team: days spent correcting tokens and hardcoded CSS values, restructuring components that were never built to be reused, and deciding what that messy Figma file was actually meant to express. And an AI model given an unstructured design fills those gaps by guessing, so the mistakes it makes are different every time — which slows frontend development down instead of speeding it up.
 
 So the preparation happens in Figma, not in the prompt. The sections below cover what has to be in place before anything is generated: how design tokens are structured, how components declare their properties, how the design is mapped to the code, and how the files are organised.
 
