@@ -32,8 +32,19 @@ const components = {
   code: (props: ComponentPropsWithoutRef<'code'>) => (
     <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground" {...props} />
   ),
-  a: (props: ComponentPropsWithoutRef<'a'>) => (
-    <a className="text-primary underline underline-offset-4 hover:no-underline" {...props} />
+  /**
+   * Links out of an article open in a new tab, so a source never costs the
+   * reader their place. Internal links (`/…`, `#…`) stay in the same tab.
+   */
+  a: ({ href = '', ...props }: ComponentPropsWithoutRef<'a'>) => (
+    <a
+      href={href}
+      {...(href.startsWith('/') || href.startsWith('#')
+        ? {}
+        : { target: '_blank', rel: 'noopener noreferrer' })}
+      className="text-primary underline underline-offset-4 hover:no-underline"
+      {...props}
+    />
   ),
   /**
    * Markdown images become optimised images. Width/height are intrinsic
