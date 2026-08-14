@@ -1,0 +1,64 @@
+---
+title: What Next.js actually sends the browser on the first request
+description: Four ways to read the HTML a Next.js server returns before any JavaScript runs, and what turns out to be in it besides your markup.
+date: 2026-08-14
+tags: [Next.js, SSR, React Server Components, DevTools]
+---
+
+I moved from a client-rendered Angular application to Next.js with server rendering. The documentation explains Server Components well enough. What it does not do is show you the bytes.
+
+In a client-rendered SPA there is nothing to look at. `index.html` is a `<div id="root"></div>` and a script tag; every component you wrote arrives as JavaScript and renders in the browser. Open the source and you learn nothing about the app. With Next.js the first response already contains the page, and I wanted to read it.
+
+## What you are looking for
+
+The Next.js docs on [how Server and Client Components work](https://nextjs.org/docs/app/getting-started/server-and-client-components#how-do-server-and-client-components-work-in-nextjs) describe three things arriving on first load: HTML, which "is used to immediately show a fast non-interactive preview of the route"; the RSC Payload, "a compact, serialized representation of the rendered React Server Components tree"; and the JavaScript that hydrates Client Components.
+
+The first two are in the same document. Only the JavaScript is a separate file. So one response body holds most of the answer.
+
+## view-source:
+
+Type `view-source:http://localhost:3000` in the address bar, or press `Ctrl+U` (`⌥⌘U` on macOS). [MDN lists the scheme](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes#view-source).
+
+This is the one that gets confused with the Elements panel. Elements shows the live DOM: after hydration, after effects, after every client-side mutation. `view-source:` shows the response body as it arrived. If a heading is in Elements but not in view-source, it was not server-rendered.
+
+## curl
+
+```
+curl -s http://localhost:3000/blog
+```
+
+No browser, no extensions, no JavaScript, so there is no way to mistake client output for server output. [`-s`](https://curl.se/docs/manpage.html#-s) silences the progress meter, and [`-i`](https://curl.se/docs/manpage.html#-i) prepends the response headers, which is where you find the `content-type` and the caching Next.js picked for that route.
+
+Piping to `head -c 2000` is usually enough. The interesting part is the top of `<body>`.
+
+## DevTools → Network
+
+Open the Network panel, reload, [filter by `Doc`](https://developer.chrome.com/docs/devtools/network/reference#filter-by-type), click the document request, and open the [Response tab](https://developer.chrome.com/docs/devtools/network/reference#response).
+
+Response, not Preview: Preview renders the HTML back into a page, which is the opposite of what you want here. This is also the only one of the four that works against a production site behind a login, because it uses the session you already have.
+
+## Disable JavaScript
+
+Command menu (`Ctrl+Shift+P`, or `⌘⇧P` on macOS) → [Disable JavaScript](https://developer.chrome.com/docs/devtools/javascript/disable) → reload.
+
+Now you see the server HTML as a page instead of as text. Layout, fonts, and content are there; nothing responds to a click. It is the fastest way to answer "how much of this page exists before hydration" without reading any markup at all.
+
+## What is actually in there
+
+Reading my own output, three things were not what I expected.
+
+**Client Components are in the HTML too.** I had read `'use client'` as "rendered in the browser". It means "hydrated in the browser". The server renders it to markup first; what the client adds is the event handlers. The theme toggle on this site arrives as a complete `<button>`, classes and all.
+
+**The RSC payload is inline, in script tags.** Search the source for `self.__next_f.push([1,`. On one article page here there are twelve of those calls. That is the serialized component tree from the docs, split into chunks so it can stream. It is what React reconciles against after hydration, and what makes client-side navigation possible without a new document.
+
+**The payload carries every prop that crossed the server/client boundary.** This is the part worth checking on your own site. My root layout renders `<NextIntlClientProvider>`, which puts the whole message catalogue into the payload: every translation for every page, on every page. The Dutch and English copy for my experience timeline ships with the blog index. That is not a bug, it is what the code asks for, and I would not have noticed it without looking.
+
+## One caveat
+
+Read the production build, not `next dev`. Development output carries extra scripts and unminified boundaries that are not in what your users get.
+
+```
+next build && next start
+```
+
+There is also a shortcut worth knowing and not relying on: `curl -s -H 'RSC: 1' http://localhost:3000/blog` returns the payload alone, as `text/x-component`, with no HTML wrapped around it. That is the request Next.js makes when prefetching a route. It is an internal protocol detail rather than a public API, so read it, but do not build on it.

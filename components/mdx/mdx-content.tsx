@@ -33,6 +33,16 @@ const components = {
     <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground" {...props} />
   ),
   /**
+   * Fenced blocks. The `code` inside carries the inline pill styling, so it is
+   * reset here; `overflow-x-auto` keeps a long command from widening the page.
+   */
+  pre: (props: ComponentPropsWithoutRef<'pre'>) => (
+    <pre
+      className="mt-6 overflow-x-auto rounded-2xl border border-border bg-muted/40 p-4 text-sm [&_code]:bg-transparent [&_code]:p-0"
+      {...props}
+    />
+  ),
+  /**
    * Links out of an article open in a new tab, so a source never costs the
    * reader their place. Internal links (`/…`, `#…`) stay in the same tab.
    */

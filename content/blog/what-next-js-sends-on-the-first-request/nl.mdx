@@ -1,0 +1,64 @@
+---
+title: Wat stuurt de Next.js-server bij het eerste verzoek?
+description: Vier manieren om de HTML te lezen die een Next.js-server terugstuurt voordat er JavaScript draait. En wat er nog meer in blijkt te zitten.
+date: 2026-08-14
+tags: [Next.js, SSR, React Server Components, DevTools]
+---
+
+Ik werkte eerst aan een Angular-applicatie die alles in de browser rendert. Daarna ging ik naar Next.js met server rendering. De documentatie legt Server Components goed uit. Maar ze laat je niet zien wat er echt over de lijn gaat.
+
+Bij een SPA die alles in de browser rendert, valt er ook niets te zien. De `index.html` bevat alleen een `<div id="root"></div>` en een script-tag. Al je componenten komen als JavaScript binnen en renderen pas in de browser. Je opent de broncode en je leert niets over de app. Bij Next.js zit de pagina al in het eerste antwoord. Dat wilde ik lezen.
+
+## Wat je zoekt
+
+De Next.js-documentatie over [hoe Server en Client Components werken](https://nextjs.org/docs/app/getting-started/server-and-client-components#how-do-server-and-client-components-work-in-nextjs) noemt drie dingen bij het eerste laden. Ten eerste HTML: die laat meteen een snelle preview zien, nog zonder interactie. Ten tweede de RSC Payload: een compacte, geserialiseerde weergave van de gerenderde boom van Server Components. En ten derde de JavaScript die Client Components hydrateert.
+
+De eerste twee zitten in hetzelfde document. Alleen de JavaScript is een apart bestand. Eén antwoord bevat dus bijna het hele verhaal.
+
+## view-source:
+
+Typ `view-source:http://localhost:3000` in de adresbalk. Of gebruik `Ctrl+U` (`⌥⌘U` op macOS). [MDN beschrijft dit schema.](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes#view-source)
+
+Mensen halen dit vaak door elkaar met het Elements-paneel. Elements toont de live DOM: ná hydratie, ná effects, ná elke wijziging in de browser. `view-source:` toont het antwoord zoals het binnenkwam. Zie je een kop wel in Elements, maar niet in view-source? Dan komt die kop niet van de server.
+
+## curl
+
+```
+curl -s http://localhost:3000/blog
+```
+
+Geen browser, geen extensies, geen JavaScript. Je kunt dus niet per ongeluk denken dat iets van de server komt. [`-s`](https://curl.se/docs/manpage.html#-s) zet de voortgangsbalk uit. [`-i`](https://curl.se/docs/manpage.html#-i) zet de headers erboven. Daar zie je het `content-type` en de caching die Next.js voor die route koos.
+
+Vaak is `head -c 2000` genoeg. Het interessante deel staat bovenaan in de `<body>`.
+
+## DevTools → Network
+
+Open het Network-paneel en herlaad de pagina. [Filter op `Doc`](https://developer.chrome.com/docs/devtools/network/reference#filter-by-type), klik op het document-verzoek en open het [Response-tabblad](https://developer.chrome.com/docs/devtools/network/reference#response).
+
+Kies Response, niet Preview. Preview maakt van de HTML weer een pagina, en dat wil je hier juist niet. Deze manier werkt als enige ook op een productiesite achter een login, want je gebruikt de sessie die je al hebt.
+
+## JavaScript uitzetten
+
+Open het commandomenu (`Ctrl+Shift+P`, of `⌘⇧P` op macOS) → [Disable JavaScript](https://developer.chrome.com/docs/devtools/javascript/disable) → herlaad de pagina.
+
+Nu zie je de HTML van de server als pagina, niet als tekst. De layout, de fonts en de tekst zijn er. Maar klikken doet niets. Zo zie je het snelst hoeveel van je pagina al bestaat vóór de hydratie, zonder één regel markup te lezen.
+
+## Wat er echt in zit
+
+Ik las mijn eigen output. Drie dingen verrasten me.
+
+**Client Components staan ook in de HTML.** Ik dacht dat `'use client'` betekende: "wordt in de browser gerenderd". Maar het betekent: "wordt in de browser gehydrateerd". De server maakt er eerst gewoon markup van. De browser voegt daarna de event handlers toe. De thema-knop op deze site komt binnen als een complete `<button>`, met alle classes erbij.
+
+**De RSC payload zit in script-tags in de pagina.** Zoek in de broncode op `self.__next_f.push([1,`. Op één artikelpagina hier staan twaalf van die aanroepen. Dat is de geserialiseerde componentenboom uit de documentatie, in stukjes geknipt zodat hij kan streamen. React vergelijkt daarmee na de hydratie, en daardoor kun je navigeren zonder een nieuw document te laden.
+
+**In die payload zit elke prop die de grens tussen server en client overging.** Dit is het deel dat je op je eigen site moet controleren. Mijn root layout rendert `<NextIntlClientProvider>`. Daardoor komt de hele vertaallijst in de payload: alle teksten van alle pagina's, op elke pagina. De Nederlandse én Engelse tekst van mijn werkervaring gaat mee met de blogpagina. Dat is geen bug. Zo staat het in mijn code. Maar ik wist het niet, tot ik ging kijken.
+
+## Eén waarschuwing
+
+Lees de productiebuild, niet `next dev`. In development komen er extra scripts mee, en de code is niet geminificeerd. Dat krijgen je bezoekers niet.
+
+```
+next build && next start
+```
+
+Er is nog een handige truc, maar bouw er niets op: `curl -s -H 'RSC: 1' http://localhost:3000/blog` geeft alleen de payload terug, als `text/x-component`, zonder HTML eromheen. Dat is het verzoek dat Next.js zelf doet als het een route vast ophaalt. Het hoort bij het interne protocol en is geen publieke API. Lezen mag, erop bouwen niet.
