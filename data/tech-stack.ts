@@ -22,7 +22,9 @@ export const tech = {
   storybook: { name: 'Storybook', icon: '/tech/storybook.svg' },
   figma: { name: 'Figma', icon: '/tech/figma.svg' },
   claudeCode: { name: 'Claude Code', icon: '/tech/claude.svg' },
+  openai: { name: 'OpenAI', icon: '/tech/openai.svg', invertOnDark: true },
   angular: { name: 'Angular', icon: '/tech/angular.svg' },
+  docker: { name: 'Docker', icon: '/tech/docker.svg' },
 } as const satisfies Record<string, TechInfo>;
 
 export type TechId = keyof typeof tech;
