@@ -66,9 +66,13 @@
       }
     },
     "selfStudy": {
+      "dutchipedia": {
+        "caption": "Dutchipedia",
+        "description": "Nederlandse woorden leren met foto's en audio."
+      },
       "schoolLibrary": {
         "caption": "Schoolbibliotheek-app",
-        "description": "Wachtwoordbeveiligde app voor het registreren en uitlenen van bibliotheekboeken."
+        "description": "App voor het registreren, uitlenen en terugbrengen van bibliotheekboeken."
       },
       "techBlogVue": {
         "caption": "Techblog",
@@ -85,10 +89,6 @@
       "multiLanguage": {
         "caption": "Meertalige pagina",
         "description": "Landingspagina voor pianolessen met een taalwisselaar."
-      },
-      "deliveryCompany": {
-        "caption": "Bezorgbedrijf-website",
-        "description": "Frontend voor een pakketbezorgbedrijf."
       },
       "parallaxTailwind": {
         "caption": "Parallax-effect",

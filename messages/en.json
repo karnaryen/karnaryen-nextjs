@@ -66,9 +66,13 @@
       }
     },
     "selfStudy": {
+      "dutchipedia": {
+        "caption": "Dutchipedia",
+        "description": "Visual Dutch vocabulary trainer with photos and audio."
+      },
       "schoolLibrary": {
         "caption": "School library app",
-        "description": "Password-protected app for registering and lending library books."
+        "description": "App for registering, lending, and returning library books."
       },
       "techBlogVue": {
         "caption": "Tech blog",
@@ -85,10 +89,6 @@
       "multiLanguage": {
         "caption": "Multi-language page",
         "description": "Piano lessons landing page with a language switcher."
-      },
-      "deliveryCompany": {
-        "caption": "Delivery company website",
-        "description": "Frontend for a cargo delivery company."
       },
       "parallaxTailwind": {
         "caption": "Parallax effect",

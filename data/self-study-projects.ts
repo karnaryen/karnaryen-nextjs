@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image';
 
-import deliveryCompany from '@/public/projects/self-study/delivery-company.webp';
+import dutchipedia from '@/public/projects/self-study/dutchipedia.webp';
 import memoji from '@/public/projects/self-study/memoji.webp';
 import multiLanguage from '@/public/projects/self-study/multi-language.webp';
 import onlineStore from '@/public/projects/self-study/online-store.webp';
@@ -26,6 +26,12 @@ export interface SelfStudyProjectInfo {
  * app/projects/.
  */
 export const selfStudyProjects = [
+  {
+    id: 'dutchipedia',
+    image: dutchipedia,
+    href: 'https://dutchipedia.nl',
+    tech: 'Next.js, shadcn/ui',
+  },
   {
     id: 'schoolLibrary',
     image: schoolLibrary,
@@ -55,12 +61,6 @@ export const selfStudyProjects = [
     image: multiLanguage,
     href: 'https://pianoles.netlify.app/',
     tech: 'React, i18next',
-  },
-  {
-    id: 'deliveryCompany',
-    image: deliveryCompany,
-    href: 'https://angular-cargo.netlify.app/',
-    tech: 'Angular, Tailwind CSS',
   },
   {
     id: 'parallaxTailwind',
