@@ -19,6 +19,7 @@ export const tech = {
   react: { name: 'React', icon: '/tech/react.svg' },
   nextjs: { name: 'Next.js', icon: '/tech/nextjs.svg', invertOnDark: true },
   shadcn: { name: 'shadcn/ui', icon: '/tech/shadcn-ui.svg', invertOnDark: true },
+  mui: { name: 'MUI', icon: '/tech/mui.svg' },
   storybook: { name: 'Storybook', icon: '/tech/storybook.svg' },
   figma: { name: 'Figma', icon: '/tech/figma.svg' },
   claudeCode: { name: 'Claude Code', icon: '/tech/claude.svg' },
