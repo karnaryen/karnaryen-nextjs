@@ -5,6 +5,7 @@ import { Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
 
+import { Analytics } from '@/components/analytics';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -42,6 +43,7 @@ export default async function RootLayout({
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
