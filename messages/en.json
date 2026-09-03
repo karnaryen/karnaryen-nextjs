@@ -27,12 +27,16 @@
   },
   "AboutPage": {
     "title": "About me",
-    "role": "Frontend developer",
+    "metaTitle": "Frontend Developer in Enschede — Natalia Karaseva",
+    "metaDescription": "Natalia Karaseva — frontend developer in Enschede, the Netherlands. 4 years building production web applications with React, Next.js, Angular, and TypeScript.",
+    "role": "Frontend Developer — React, Next.js & Angular",
+    "heroMeta": "4 years building production web applications · Enschede, Netherlands",
+    "heroSummary": "I build product interfaces and reusable UI systems with TypeScript, React/Next.js, and Angular — from Figma and component architecture to testing and production.",
     "photoAlt": "Photo of Natalia Karaseva",
-    "intro1": "Hello, my name is Natalia. I'm a frontend developer, and I build clean, responsive interfaces that people find easy to use. I work with the React, Next.js, and Angular frameworks, along with HTML, CSS, JavaScript, TypeScript, Tailwind CSS, Storybook, and AI tools. I like taking a feature end to end, from the first line of code to production, and I care that what ships is genuinely finished: consistent with the design, true to the requirements, checked, and fast. I enjoy working on products that matter to the people using them.",
-    "intro2": "Earlier I worked in healthcare, building web applications that helped medical staff, families, and children in intensive care units stay connected through intuitive, modern interfaces. Today I build the frontend for educational projects for primary schools: an online platform where children work through exercises for every school subject at their own level, and where parents and teachers can follow how they are doing.",
-    "ctaProjects": "View my projects",
-    "ctaContact": "Get in touch",
+    "intro1": "I have been building production web applications since October 2022: three years of Angular in healthcare, and React and Next.js today. Most of my work starts at a Figma file and ends in production — component architecture, design tokens and a shared UI library, state and API integration, responsive and cross-browser layouts, accessibility, Storybook, and unit and end-to-end tests with Vitest, Cypress, and Playwright. I like taking a feature end to end and shipping it genuinely finished: consistent with the design, true to the requirements, tested, and fast.",
+    "intro2": "At Neolook I built the frontend of healthcare software for neonatal and pediatric intensive care, deployed in hospitals including Máxima MC, UMC Utrecht, and UMC Groningen: real-time camera monitoring over Server-Sent Events, multi-person video calls with WebRTC, license-based feature and route protection, Dutch–English localization, and dark mode. Today, at Junior Einstein, I work on a large educational platform for primary schools — not one application, but several connected products on different stacks: a webshop and content pages on Next.js, and the learning environment itself as a React SPA. I build product features and reusable UI components with MUI, shadcn/ui, and Tailwind CSS, keep the interface faithful to the design, and shape the Figma-to-React workflow the team uses to turn designs into components.",
+    "ctaCaseStudies": "View case studies",
+    "ctaCv": "Download CV",
     "techStackTitle": "Tech stack"
   },
   "ProjectsPage": {

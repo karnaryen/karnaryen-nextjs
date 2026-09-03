@@ -35,3 +35,8 @@ export const contacts = [
 
 export type ContactId = (typeof contacts)[number]['id'];
 export type Contact = ContactInfo & { id: ContactId };
+
+/** Lookup for pages that link to one specific contact, e.g. the homepage hero. */
+export const contactsById = Object.fromEntries(
+  contacts.map((contact) => [contact.id, contact]),
+) as Record<ContactId, Contact>;

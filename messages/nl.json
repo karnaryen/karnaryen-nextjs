@@ -27,12 +27,16 @@
   },
   "AboutPage": {
     "title": "Over mij",
-    "role": "Frontend-ontwikkelaar",
+    "metaTitle": "Frontend developer in Enschede — Natalia Karaseva",
+    "metaDescription": "Natalia Karaseva — frontend developer in Enschede, Nederland. 4 jaar ervaring met webapplicaties in productie met React, Next.js, Angular en TypeScript.",
+    "role": "Frontend Developer — React, Next.js & Angular",
+    "heroMeta": "4 jaar ervaring met webapplicaties in productie · Enschede, Nederland",
+    "heroSummary": "Ik bouw productinterfaces en herbruikbare UI-systemen met TypeScript, React/Next.js en Angular: van Figma en componentarchitectuur tot tests en productie.",
     "photoAlt": "Foto van Natalia Karaseva",
-    "intro1": "Hallo, mijn naam is Natalia. Ik ben frontend-ontwikkelaar. Ik maak strakke en responsieve interfaces die makkelijk te gebruiken zijn. Ik werk met de frameworks React, Next.js en Angular, en met HTML, CSS, JavaScript, TypeScript, Tailwind CSS, Storybook en AI-tools. Ik bouw een feature het liefst van begin tot eind: van de eerste regel code tot in productie. Ik vind het belangrijk dat wat live gaat ook echt af is: het past bij het design, het voldoet aan de eisen, het is goed gecontroleerd en het werkt snel. Ik werk graag aan producten die iets betekenen voor de mensen die ze gebruiken.",
-    "intro2": "Eerder werkte ik in de zorg. Ik bouwde webapplicaties met intuïtieve, moderne interfaces. Daarmee bleven medisch personeel, kinderen op de intensive care en hun families met elkaar in contact. Nu maak ik de frontend voor educatieve projecten voor basisscholen. Kinderen, ouders en leerkrachten krijgen toegang tot een online platform. Daar kunnen kinderen serieus oefenen voor alle vakken van de basisschool, op hun eigen niveau. Ouders en leerkrachten zien hoe het gaat.",
-    "ctaProjects": "Bekijk mijn projecten",
-    "ctaContact": "Neem contact op",
+    "intro1": "Sinds oktober 2022 werk ik aan webapplicaties die echt in productie draaien. Eerst drie jaar met Angular in de zorg, nu met React en Next.js. Mijn werk begint meestal bij een ontwerp in Figma en eindigt in productie: componentarchitectuur, design tokens, een gedeelde UI-bibliotheek, koppelingen met API's, responsieve layouts voor alle schermen en browsers, toegankelijkheid, Storybook en tests met Vitest, Cypress en Playwright. Ik maak een feature graag van begin tot eind af. Wat live gaat, moet ook echt af zijn: het past bij het design, het klopt met de eisen, het is getest en het is snel.",
+    "intro2": "Bij Neolook bouwde ik de frontend van software voor de neonatale en pediatrische intensive care. Ziekenhuizen zoals Máxima MC, UMC Utrecht en UMC Groningen gebruiken deze software. Ik maakte onder andere live camerastatus met Server-Sent Events, videogesprekken met meerdere mensen via WebRTC, toegang tot functies en pagina's op basis van het licentietype, Nederlands-Engelse vertaling en een donkere modus. Nu werk ik bij Junior Einstein aan een groot online leerplatform voor het basisonderwijs. Dat is niet één applicatie, maar een aantal producten met verschillende technieken: een webshop en contentpagina's in Next.js, en de leeromgeving zelf als React SPA. Ik bouw functies en herbruikbare UI-componenten met MUI, shadcn/ui en Tailwind CSS, ik houd de interface dicht bij het design, en ik werk aan de manier waarop het team van Figma naar React gaat.",
+    "ctaCaseStudies": "Bekijk mijn projecten",
+    "ctaCv": "Download cv",
     "techStackTitle": "Tech stack"
   },
   "ProjectsPage": {
