@@ -48,7 +48,7 @@ export default function Home() {
           <p className="mt-3 text-base font-medium text-balance text-foreground/80">
             {t('heroMeta')}
           </p>
-          <p className="mt-4 max-w-prose leading-relaxed text-pretty text-muted-foreground">
+          <p className="mt-4 leading-relaxed text-pretty text-muted-foreground">
             {t('heroSummary')}
           </p>
           <HeroActions className="mt-7" />
@@ -56,7 +56,7 @@ export default function Home() {
       </section>
 
       <section className="mt-14 lg:mt-20">
-        <RevealGrid className="max-w-[54rem] space-y-4">
+        <RevealGrid className="space-y-4">
           <h2 style={{ '--reveal-index': 0 }} className="text-2xl font-semibold text-foreground">
             {t('title')}
           </h2>
