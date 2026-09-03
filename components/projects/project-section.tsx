@@ -2,7 +2,7 @@ import { ExternalLink, Lock } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-import { TechStack } from '@/components/tech-stack';
+import { TechStack } from '@/components/shared/tech-stack';
 import { buttonVariants } from '@/components/ui/button';
 import { browsers } from '@/data/browsers';
 import type { Project } from '@/data/projects';

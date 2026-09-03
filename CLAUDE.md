@@ -28,3 +28,18 @@ frontend best practices, and a clean design system are priorities.
   building it.
 - Old site is read-only reference at `../natkdev/natkdev.com` — read it
   for content, but re-author components idiomatically here.
+
+## Component layout
+
+`components/` is grouped by feature, mirroring the routes in `app/`:
+
+- `components/ui/` — shadcn/ui primitives (owned by the CLI, don't hand-edit).
+- `components/shared/` — used by more than one feature, or by the app shell
+  (header, footer, theme, locale switcher, reveal grid, tech stack…).
+- `components/<feature>/` — `home`, `blog`, `projects`, `experience`,
+  `education`, `contacts`. Sub-features nest further (e.g.
+  `projects/tic-tac-toe/`, `blog/mdx/`).
+
+A component used by a second feature moves to `shared/`, unless it clearly
+belongs to one feature's domain and the other is just consuming it (e.g.
+`home/latest-posts` renders `blog/post-card`).

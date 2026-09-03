@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import { HeroActions } from '@/components/hero-actions';
-import { LatestPosts } from '@/components/latest-posts';
-import { RevealGrid } from '@/components/reveal-grid';
-import { TechStack } from '@/components/tech-stack';
+import { HeroActions } from '@/components/home/hero-actions';
+import { LatestPosts } from '@/components/home/latest-posts';
+import { RevealGrid } from '@/components/shared/reveal-grid';
+import { TechStack } from '@/components/shared/tech-stack';
 import { createHomeJsonLd } from '@/data/person-json-ld';
 import { pageMetadata } from '@/lib/metadata';
 import mePhoto from '@/public/me.webp';

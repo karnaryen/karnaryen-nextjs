@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import { CourseCard } from '@/components/course-card';
-import { RevealGrid } from '@/components/reveal-grid';
+import { CourseCard } from '@/components/education/course-card';
+import { RevealGrid } from '@/components/shared/reveal-grid';
 import { courses, mainEducation } from '@/data/education';
 import { pageMetadata } from '@/lib/metadata';
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFormatter, getLocale, getTranslations } from 'next-intl/server';
 
-import { MdxContent } from '@/components/mdx/mdx-content';
+import { MdxContent } from '@/components/blog/mdx/mdx-content';
 import { buttonVariants } from '@/components/ui/button';
 import { createPostJsonLd } from '@/data/post-json-ld';
 import { getPost } from '@/lib/blog';

@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import {
   ExperienceTimeline,
   type ExperienceTimelineEntry,
-} from '@/components/experience-timeline';
+} from '@/components/experience/experience-timeline';
 import { experienceItems } from '@/data/experience';
 import { pageMetadata } from '@/lib/metadata';
 

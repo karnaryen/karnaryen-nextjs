@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import { ProjectSection } from '@/components/project-section';
-import { RevealGrid } from '@/components/reveal-grid';
-import { SelfStudyProjectCard } from '@/components/self-study-project-card';
+import { ProjectSection } from '@/components/projects/project-section';
+import { SelfStudyProjectCard } from '@/components/projects/self-study-project-card';
+import { RevealGrid } from '@/components/shared/reveal-grid';
 import { projects } from '@/data/projects';
 import { selfStudyProjects } from '@/data/self-study-projects';
 import { pageMetadata } from '@/lib/metadata';

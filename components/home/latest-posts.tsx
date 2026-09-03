@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { PostCard } from '@/components/post-card';
-import { RevealGrid } from '@/components/reveal-grid';
+import { PostCard } from '@/components/blog/post-card';
+import { RevealGrid } from '@/components/shared/reveal-grid';
 import { getPosts } from '@/lib/blog';
 
 /**

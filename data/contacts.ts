@@ -1,11 +1,11 @@
 import { Mail } from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
 
-import { GithubIcon, LinkedinIcon } from '@/components/brand-icons';
+import { GithubIcon, LinkedinIcon } from '@/components/shared/brand-icons';
 
 /**
  * How to add a contact: append an entry below (icon from lucide-react or
- * `components/brand-icons.tsx`) and add its label under
+ * `components/shared/brand-icons.tsx`) and add its label under
  * `ContactsPage.links.<id>` in `messages/en.json` and `messages/nl.json`.
  */
 export interface ContactInfo {

@@ -4,7 +4,7 @@ import { Caprasimo } from 'next/font/google';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
-import { TicTacToeGame } from '@/components/tic-tac-toe/tic-tac-toe-game';
+import { TicTacToeGame } from '@/components/projects/tic-tac-toe/tic-tac-toe-game';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

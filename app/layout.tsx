@@ -5,10 +5,10 @@ import { Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { Analytics } from '@/components/analytics';
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
-import { ThemeProvider } from '@/components/theme-provider';
+import { Analytics } from '@/components/shared/analytics';
+import { Footer } from '@/components/shared/footer';
+import { Header } from '@/components/shared/header';
+import { ThemeProvider } from '@/components/shared/theme-provider';
 import { OG_LOCALES } from '@/lib/metadata';
 import { OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/site';
 import { cn } from '@/lib/utils';

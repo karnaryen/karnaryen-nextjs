@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { MemojiGame } from '@/components/memoji-game';
+import { MemojiGame } from '@/components/projects/memoji/memoji-game';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 

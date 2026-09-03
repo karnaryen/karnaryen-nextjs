@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
-import { ContactCard } from '@/components/contact-card';
-import { RevealGrid } from '@/components/reveal-grid';
+import { ContactCard } from '@/components/contacts/contact-card';
+import { RevealGrid } from '@/components/shared/reveal-grid';
 import { contacts } from '@/data/contacts';
 import { pageMetadata } from '@/lib/metadata';
 
