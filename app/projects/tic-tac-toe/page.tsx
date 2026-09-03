@@ -28,7 +28,7 @@ export default function TicTacToePage() {
   return (
     <main className={cn('mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:py-16', caprasimo.variable)}>
       <h1 className="mb-8 text-center text-3xl font-semibold text-foreground">
-        {t('selfStudy.ticTacToe.caption')}
+        {t('experiments.ticTacToe.caption')}
       </h1>
       {/* Remount on locale change so the default player names follow the language. */}
       <TicTacToeGame key={locale} />

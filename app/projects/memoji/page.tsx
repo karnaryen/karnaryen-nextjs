@@ -23,7 +23,7 @@ export default function MemojiPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
       <h1 className="text-center text-3xl font-semibold text-foreground">
-        {t('selfStudy.memoji.caption')}
+        {t('experiments.memoji.caption')}
       </h1>
       <MemojiGame />
       <div className="mt-12 text-center">

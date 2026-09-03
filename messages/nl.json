@@ -45,9 +45,10 @@
   },
   "ProjectsPage": {
     "title": "Projecten",
-    "metaDescription": "Frontend case studies van Natalia Karaseva — zorgsoftware gebouwd met Angular en Tailwind CSS voor Nederlandse ziekenhuizen, plus zelfstudieprojecten in React, Next.js en Vue.",
+    "metaDescription": "Frontend case studies van Natalia Karaseva — zorgsoftware gebouwd met Angular en Tailwind CSS voor Nederlandse ziekenhuizen, plus persoonlijke projecten met Next.js en React.",
     "workProjects": "Werkprojecten",
-    "selfStudyProjects": "Zelfstudieprojecten",
+    "personalProjects": "Persoonlijke projecten",
+    "earlyExperiments": "Vroege experimenten",
     "confidential": "Vertrouwelijk",
     "readMore": "Lees meer...",
     "open": "Open",
@@ -74,7 +75,7 @@
         "contribution": "In de afgelopen drie jaar was ik vooral verantwoordelijk voor de ontwikkeling van de frontend van het S2S Platform. Mijn werk bestond uit het maken van nieuwe functies, pagina's en componenten. Ik zorgde dat ze goed werkten en op verschillende schermen reageerden, en dat de frontend duidelijk en goed met de backend communiceerde. Toen het project complexer werd, werkte ik ook aan de frontend-architectuur om deze schaalbaar en onderhoudbaar te maken. Tot de functies die ik heb ontwikkeld horen: real-time camerastatus-updates (SSE), grid- en lijstweergaven voor cameramonitoring (voor zowel verpleegposten als zorgtelefoons), een webinterface voor videovergaderingen met meerdere personen, toegangsbeheer en URL-bescherming op basis van licentietype (Family, Professional of Academic), en licht/donker-modi. Ik heb nauw samengewerkt met ontwerpers, backend-ontwikkelaars, de solution architect en het management. We werkten in sprints met regelmatige demo's en sprintplanning in Jira."
       }
     },
-    "selfStudy": {
+    "personal": {
       "dutchipedia": {
         "caption": "Dutchipedia",
         "description": "Nederlandse woorden leren met foto's en audio."
@@ -82,7 +83,9 @@
       "schoolLibrary": {
         "caption": "Schoolbibliotheek-app",
         "description": "App voor het registreren, uitlenen en terugbrengen van bibliotheekboeken."
-      },
+      }
+    },
+    "experiments": {
       "techBlogVue": {
         "caption": "Techblog",
         "description": "Kleine blog met artikelen over webontwikkeling."

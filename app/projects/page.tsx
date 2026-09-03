@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
+import { ProjectCard } from '@/components/projects/project-card';
 import { ProjectSection } from '@/components/projects/project-section';
-import { SelfStudyProjectCard } from '@/components/projects/self-study-project-card';
 import { RevealGrid } from '@/components/shared/reveal-grid';
+import { earlyExperiments } from '@/data/early-experiments';
+import { personalProjects } from '@/data/personal-projects';
 import { projects } from '@/data/projects';
-import { selfStudyProjects } from '@/data/self-study-projects';
 import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -35,11 +36,25 @@ export default function ProjectsPage() {
       </div>
 
       <h2 className="mt-16 text-2xl font-semibold text-foreground lg:mt-24">
-        {t('selfStudyProjects')}
+        {t('personalProjects')}
       </h2>
       <RevealGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {selfStudyProjects.map((project, index) => (
-          <SelfStudyProjectCard key={project.id} project={project} index={index} />
+        {personalProjects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} translationNamespace="personal" index={index} />
+        ))}
+      </RevealGrid>
+
+      <h2 className="mt-16 text-2xl font-semibold text-foreground lg:mt-24">
+        {t('earlyExperiments')}
+      </h2>
+      <RevealGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {earlyExperiments.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            translationNamespace="experiments"
+            index={index}
+          />
         ))}
       </RevealGrid>
     </main>

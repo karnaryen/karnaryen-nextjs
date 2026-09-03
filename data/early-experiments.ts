@@ -1,15 +1,13 @@
 import type { StaticImageData } from 'next/image';
 
-import dutchipedia from '@/public/projects/self-study/dutchipedia.webp';
 import memoji from '@/public/projects/self-study/memoji.webp';
 import multiLanguage from '@/public/projects/self-study/multi-language.webp';
 import onlineStore from '@/public/projects/self-study/online-store.webp';
 import parallaxTailwind from '@/public/projects/self-study/parallax-tailwind.webp';
-import schoolLibrary from '@/public/projects/self-study/school-library.webp';
 import techBlogVue from '@/public/projects/self-study/tech-blog-vue.webp';
 import ticTacToe from '@/public/projects/self-study/tic-tac-toe.webp';
 
-export interface SelfStudyProjectInfo {
+export interface EarlyExperimentInfo {
   id: string;
   image: StaticImageData;
   /** Internal route (starts with "/") or external URL (opens in a new tab). */
@@ -19,25 +17,13 @@ export interface SelfStudyProjectInfo {
 }
 
 /**
- * Self-study projects shown on /projects, in display order. To add one:
+ * Early experiments shown on /projects, in display order. To add one:
  * append an entry here, add its caption + description to messages/en.json
- * and messages/nl.json under ProjectsPage.selfStudy.<id>, and drop a square
- * thumbnail in public/projects/self-study/. Internal hrefs need a page under
- * app/projects/.
+ * and messages/nl.json under ProjectsPage.earlyExperiments.<id>, and drop a
+ * square thumbnail in public/projects/self-study/. Internal hrefs need a
+ * page under app/projects/.
  */
-export const selfStudyProjects = [
-  {
-    id: 'dutchipedia',
-    image: dutchipedia,
-    href: 'https://dutchipedia.nl',
-    tech: 'Next.js, shadcn/ui',
-  },
-  {
-    id: 'schoolLibrary',
-    image: schoolLibrary,
-    href: 'https://biebouders.netlify.app/',
-    tech: 'Angular, Firebase',
-  },
+export const earlyExperiments = [
   {
     id: 'techBlogVue',
     image: techBlogVue,
@@ -74,12 +60,12 @@ export const selfStudyProjects = [
     href: '/projects/memoji',
     tech: 'React',
   },
-] as const satisfies readonly SelfStudyProjectInfo[];
+] as const satisfies readonly EarlyExperimentInfo[];
 
-export type SelfStudyProjectId = (typeof selfStudyProjects)[number]['id'];
+export type EarlyExperimentId = (typeof earlyExperiments)[number]['id'];
 
-export type SelfStudyProject = SelfStudyProjectInfo & { id: SelfStudyProjectId };
+export type EarlyExperiment = EarlyExperimentInfo & { id: EarlyExperimentId };
 
-export function isExternal(project: SelfStudyProjectInfo): boolean {
+export function isExternal(project: EarlyExperimentInfo): boolean {
   return !project.href.startsWith('/');
 }

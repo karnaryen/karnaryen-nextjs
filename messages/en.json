@@ -45,9 +45,10 @@
   },
   "ProjectsPage": {
     "title": "Projects",
-    "metaDescription": "Frontend case studies by Natalia Karaseva — healthcare platforms built with Angular and Tailwind CSS for Dutch hospitals, plus self-study projects in React, Next.js, and Vue.",
+    "metaDescription": "Frontend case studies by Natalia Karaseva — healthcare platforms built with Angular and Tailwind CSS for Dutch hospitals, plus personal projects built with Next.js and React.",
     "workProjects": "Work projects",
-    "selfStudyProjects": "Self-study projects",
+    "personalProjects": "Personal projects",
+    "earlyExperiments": "Early experiments",
     "confidential": "Confidential",
     "readMore": "Read more...",
     "open": "Open",
@@ -74,7 +75,7 @@
         "contribution": "Over the last three years, I was mainly responsible for developing the frontend of the S2S Platform. My work included implementing new features, pages, and components, ensuring they were responsive and reliable, and making sure the frontend communicated smoothly and effectively with the backend. As the project grew more complex, I also worked on the frontend architecture to make it scalable and maintainable. Among the features I implemented were real-time camera status updates (SSE), grid and list views for camera monitoring (for both nurse stations and care telephones), a web interface for multi-person video calls, feature access and URL protection based on license type (Family, Professional, or Academic), and light/dark modes. I collaborated closely with designers, backend developers, the solution architect, and management, working in sprints with regular demos and sprint planning in Jira."
       }
     },
-    "selfStudy": {
+    "personal": {
       "dutchipedia": {
         "caption": "Dutchipedia",
         "description": "Visual Dutch vocabulary trainer with photos and audio."
@@ -82,7 +83,9 @@
       "schoolLibrary": {
         "caption": "School library app",
         "description": "App for registering, lending, and returning library books."
-      },
+      }
+    },
+    "experiments": {
       "techBlogVue": {
         "caption": "Tech blog",
         "description": "Small blog with articles about web development."

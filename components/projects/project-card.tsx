@@ -1,22 +1,31 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { buttonVariants } from '@/components/ui/button';
-import { isExternal, type SelfStudyProject } from '@/data/self-study-projects';
 import { cn } from '@/lib/utils';
 
-interface SelfStudyProjectCardProps {
-  project: SelfStudyProject;
+interface ProjectCardInfo {
+  id: string;
+  image: StaticImageData;
+  href: string;
+  tech: string;
+}
+
+interface ProjectCardProps {
+  project: ProjectCardInfo;
+  /** i18n namespace under ProjectsPage holding this project's caption/description. */
+  translationNamespace: 'personal' | 'experiments';
   /** Position in the grid; drives the staggered reveal delay. */
   index?: number;
 }
 
-export function SelfStudyProjectCard({ project, index = 0 }: SelfStudyProjectCardProps) {
+export function ProjectCard({ project, translationNamespace, index = 0 }: ProjectCardProps) {
   const t = useTranslations('ProjectsPage');
-  const external = isExternal(project);
-  const caption = t(`selfStudy.${project.id}.caption`);
+  const external = !project.href.startsWith('/');
+  // Keys are validated against messages/en.json via the data files' `id` unions instead.
+  const caption = t(`${translationNamespace}.${project.id}.caption` as Parameters<typeof t>[0]);
 
   const image = <Image src={project.image} alt={caption} className="size-28 rounded-xl object-contain" />;
 
@@ -37,7 +46,7 @@ export function SelfStudyProjectCard({ project, index = 0 }: SelfStudyProjectCar
 
       <h3 className="mt-4 font-semibold text-foreground">{caption}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        {t(`selfStudy.${project.id}.description`)}
+        {t(`${translationNamespace}.${project.id}.description` as Parameters<typeof t>[0])}
       </p>
       <p className="mt-2 text-xs font-medium text-muted-foreground">{project.tech}</p>
 
