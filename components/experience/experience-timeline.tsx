@@ -3,6 +3,7 @@
 import 'react-vertical-timeline-component/style.min.css';
 
 import Image, { type StaticImageData } from 'next/image';
+import type { ReactNode } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 export interface ExperienceTimelineEntry {
@@ -11,7 +12,7 @@ export interface ExperienceTimelineEntry {
   company?: string;
   period: string;
   /** One bullet point per array item. */
-  description: string[];
+  description: ReactNode[];
   icon: StaticImageData;
 }
 
@@ -54,8 +55,8 @@ export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
             <h4 className="mt-1 text-sm font-medium text-primary">{entry.company}</h4>
           )}
           <ul className="mt-3 list-disc space-y-1.5 pl-4 !text-sm !font-normal leading-relaxed text-muted-foreground">
-            {entry.description.map((line) => (
-              <li key={line}>{line}</li>
+            {entry.description.map((line, index) => (
+              <li key={index}>{line}</li>
             ))}
           </ul>
         </VerticalTimelineElement>

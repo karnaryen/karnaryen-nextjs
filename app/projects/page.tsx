@@ -44,7 +44,10 @@ export default function ProjectsPage() {
         ))}
       </RevealGrid>
 
-      <h2 className="mt-16 text-2xl font-semibold text-foreground lg:mt-24">
+      <h2
+        id="early-experiments"
+        className="mt-16 scroll-mt-24 text-2xl font-semibold text-foreground lg:mt-24"
+      >
         {t('earlyExperiments')}
       </h2>
       <RevealGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
