@@ -163,6 +163,10 @@
       }
     },
     "courses": {
+      "udemyReduxSaga": {
+        "org": "Udemy",
+        "name": "Redux Saga with React: Fast-track Redux Saga intro course"
+      },
       "udemyClaudeCode": {
         "org": "Udemy",
         "name": "Claude Code - The Practical Guide"

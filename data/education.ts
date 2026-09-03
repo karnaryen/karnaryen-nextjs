@@ -7,6 +7,7 @@ import duo from '@/public/education/duo.webp';
 import freeCodeCamp from '@/public/education/freecodecamp.webp';
 import istqb from '@/public/education/istqb.webp';
 import maiSvg from '@/public/education/mai.svg';
+import reduxSagaUdemy from '@/public/education/redux-saga-udemy.webp';
 import yandex from '@/public/education/yandex.webp';
 
 // Next.js types .svg static imports as `any`, unlike bitmap formats.
@@ -36,6 +37,12 @@ export const mainEducation = {
 } as const;
 
 export const courses = [
+  {
+    id: 'udemyReduxSaga',
+    year: '2026',
+    image: reduxSagaUdemy,
+    href: 'https://www.udemy.com/certificate/UC-b0136fb9-b670-44b6-b44d-bb96580099b0/',
+  },
   {
     id: 'udemyClaudeCode',
     year: '2026',
