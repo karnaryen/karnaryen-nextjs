@@ -2,16 +2,19 @@ import { ArrowLeft } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 
 import { MemojiGame } from '@/components/memoji-game';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('ProjectsPage');
-  return { title: t('selfStudy.memoji.caption') };
-}
+/**
+ * A toy that is on its way out of the portfolio, so it gets no canonical URL
+ * and no place in the sitemap — only a directive to keep it out of the index.
+ */
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+  alternates: { canonical: null },
+};
 
 export default function MemojiPage() {
   const t = useTranslations('ProjectsPage');

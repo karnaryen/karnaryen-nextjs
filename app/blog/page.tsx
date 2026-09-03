@@ -4,10 +4,11 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { PostCard } from '@/components/post-card';
 import { RevealGrid } from '@/components/reveal-grid';
 import { getPosts } from '@/lib/blog';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('BlogPage');
-  return { title: t('title'), description: t('intro') };
+  return pageMetadata({ path: '/blog', title: t('title'), description: t('intro') });
 }
 
 export default async function BlogPage() {

@@ -7,22 +7,30 @@ import { HeroActions } from '@/components/hero-actions';
 import { LatestPosts } from '@/components/latest-posts';
 import { RevealGrid } from '@/components/reveal-grid';
 import { TechStack } from '@/components/tech-stack';
-import { personJsonLd } from '@/data/person-json-ld';
+import { createHomeJsonLd } from '@/data/person-json-ld';
+import { pageMetadata } from '@/lib/metadata';
 import mePhoto from '@/public/me.webp';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('AboutPage');
-  return { title: t('metaTitle'), description: t('metaDescription') };
+  return pageMetadata({
+    path: '/',
+    // Already ends in the name, so the `— Natalia Karaseva` template would repeat it.
+    absoluteTitle: true,
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+  });
 }
 
 export default function Home() {
   const t = useTranslations('AboutPage');
+  const jsonLd = createHomeJsonLd({ description: t('metaDescription') });
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="flex flex-col items-center gap-8 lg:flex-row lg:gap-14">
         <Image

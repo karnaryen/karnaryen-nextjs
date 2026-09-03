@@ -1,4 +1,8 @@
 {
+  "Meta": {
+    "defaultTitle": "Natalia Karaseva — Frontend Developer in Enschede",
+    "defaultDescription": "Portfolio of Natalia Karaseva, a frontend developer in Enschede, the Netherlands, building production web applications with React, Next.js, Angular, and TypeScript."
+  },
   "Header": {
     "name": "Natalia Karaseva",
     "navLabel": "Main navigation",
@@ -41,6 +45,7 @@
   },
   "ProjectsPage": {
     "title": "Projects",
+    "metaDescription": "Frontend case studies by Natalia Karaseva — healthcare platforms built with Angular and Tailwind CSS for Dutch hospitals, plus self-study projects in React, Next.js, and Vue.",
     "workProjects": "Work projects",
     "selfStudyProjects": "Self-study projects",
     "confidential": "Confidential",
@@ -114,6 +119,7 @@
   },
   "ExperiencePage": {
     "title": "Experience",
+    "metaDescription": "Work history of Natalia Karaseva, frontend developer in Enschede: React and Next.js at Junior Einstein, three years of Angular in healthcare at Neolook, and earlier roles in C++ development and testing.",
     "timeline": {
       "juniorEinstein": {
         "title": "Frontend developer",
@@ -144,6 +150,7 @@
   },
   "EducationPage": {
     "title": "Education",
+    "metaDescription": "Courses, certificates, and academic background of Natalia Karaseva — frontend developer in Enschede, the Netherlands.",
     "coursesTitle": "Courses & Certificates",
     "mainTitle": "Academic Background",
     "main": {
@@ -185,6 +192,7 @@
   },
   "ContactsPage": {
     "title": "Contacts",
+    "metaDescription": "Get in touch with Natalia Karaseva, frontend developer in Enschede, the Netherlands — email, LinkedIn, and GitHub.",
     "intro": "Feel free to reach out — I'm always happy to connect.",
     "links": {
       "github": {

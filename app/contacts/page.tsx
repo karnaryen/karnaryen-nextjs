@@ -5,10 +5,15 @@ import { getTranslations } from 'next-intl/server';
 import { ContactCard } from '@/components/contact-card';
 import { RevealGrid } from '@/components/reveal-grid';
 import { contacts } from '@/data/contacts';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('ContactsPage');
-  return { title: t('title') };
+  return pageMetadata({
+    path: '/contacts',
+    title: t('title'),
+    description: t('metaDescription'),
+  });
 }
 
 export default function ContactsPage() {

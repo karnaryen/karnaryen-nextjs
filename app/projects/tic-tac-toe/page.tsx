@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Caprasimo } from 'next/font/google';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 
 import { TicTacToeGame } from '@/components/tic-tac-toe/tic-tac-toe-game';
 import { buttonVariants } from '@/components/ui/button';
@@ -12,10 +11,14 @@ import { cn } from '@/lib/utils';
 /** Display font of the legacy game, used for the board and the game-over card. */
 const caprasimo = Caprasimo({ subsets: ['latin'], weight: '400', variable: '--font-display' });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('ProjectsPage');
-  return { title: t('selfStudy.ticTacToe.caption') };
-}
+/**
+ * A toy that is on its way out of the portfolio, so it gets no canonical URL
+ * and no place in the sitemap — only a directive to keep it out of the index.
+ */
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+  alternates: { canonical: null },
+};
 
 export default function TicTacToePage() {
   const t = useTranslations('ProjectsPage');
