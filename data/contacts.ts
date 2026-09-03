@@ -18,7 +18,7 @@ export interface ContactInfo {
 }
 
 export const contacts = [
-  { id: 'github', value: 'nat-k-dev', href: 'https://github.com/nat-k-dev', icon: GithubIcon },
+  { id: 'github', value: 'karnaryen', href: 'https://github.com/karnaryen', icon: GithubIcon },
   {
     id: 'email',
     value: 'natalia.kutina13@gmail.com',
