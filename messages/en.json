@@ -45,7 +45,7 @@
   },
   "ProjectsPage": {
     "title": "Projects",
-    "metaDescription": "Frontend case studies by Natalia Karaseva — healthcare platforms built with Angular and Tailwind CSS for Dutch hospitals, plus personal projects built with Next.js and React.",
+    "metaDescription": "Frontend case studies by Natalia Karaseva — a React design system and AI-assisted Figma-to-React workflow for an educational platform, healthcare platforms built with Angular and Tailwind CSS for Dutch hospitals, plus personal projects built with Next.js and React.",
     "workProjects": "Work projects",
     "personalProjects": "Personal projects",
     "earlyExperiments": "Early experiments",
@@ -56,6 +56,12 @@
     "browsersLabel": "Developed for browsers:",
     "demoNote": "Demo mode: videostreams are replaced with stock videos",
     "projects": {
+      "designSystem": {
+        "title": "Junior Einstein Design System",
+        "imageAlt": "Diagram of the Figma-to-React workflow: a button component matrix in Figma with Code Connect, and the same component in Storybook",
+        "summary": "Junior Einstein is an educational web platform for primary schools in the Netherlands. The platform is built on a shared design system and a custom component library that the team develops in-house.",
+        "contribution": "Since November 2025 I have been building the component library and product UI in React and TypeScript. When AI-assisted development became a company priority, I looked into why AI-generated components still needed days of manual fixes, and proposed a new Figma-to-React process: a three-layer token architecture, a Figma plugin that exports tokens as CSS variables, and Code Connect. Building a UI component now takes hours instead of days."
+      },
       "earlyMoves": {
         "title": "Neolook Early Moves",
         "imageAlt": "Screenshot of the Early Moves application interface",
@@ -110,7 +116,8 @@
         "caption": "Memoji game",
         "description": "Memory game with emoji pairs and a timer."
       }
-    }
+    },
+    "readCaseStudy": "Read case study"
   },
   "BlogPage": {
     "title": "Blog",
@@ -234,5 +241,123 @@
   },
   "Footer": {
     "copyright": "© karnaryen.com 2026"
+  },
+  "DesignSystemPage": {
+    "title": "Building a scalable React design system for an educational platform",
+    "metaDescription": "Case study: how Natalia Karaseva set up a three-layer token architecture, a Figma plugin, Code Connect, and an AI-assisted Figma-to-React workflow at Junior Einstein, cutting UI component development from days to hours.",
+    "backToProjects": "Back to projects",
+    "company": "Junior Einstein",
+    "jobTitle": "Frontend developer",
+    "period": "Nov 2025 — present",
+    "role": {
+      "title": "My role",
+      "body": "I joined as a frontend developer in November 2025. My main task was to build reusable components for the library and product UI for the platform.\nBeyond that, I took the initiative on the Figma-to-React process:",
+      "items": "Wrote a report on where frontend time was actually going when working with AI-generated components.\nResearched existing approaches: AI-friendly design systems, token architectures, and AI-first Figma-to-code workflows.\nRan experiments in Figma, in React, and with different AI models to find a setup that produced correct components on the first attempt.\nProposed the new token architecture and workflow to management and the design team, and helped implement it."
+    },
+    "imageAlt": "Diagram of the Figma-to-React workflow: a button component matrix in Figma with Code Connect, and the same component in Storybook",
+    "imageNote": "Illustration. Product screenshots are confidential, so the image shows a mock-up of the workflow.",
+    "context": {
+      "title": "Context",
+      "body": "Junior Einstein is an educational web platform for primary schools in the Netherlands. Designers, frontend developers, and backend developers work on it together.\nThe designers created a design system in Figma. The frontend team built a component library on top of it in React and TypeScript, documented in Storybook.\nIn 2025, management set a goal to become an AI-first company. AI tools had to be used to speed up development, including turning Figma designs into React components."
+    },
+    "problem": {
+      "title": "Problem",
+      "body": "AI generated components quickly, but the results had many errors. Fixing them by hand took frontend developers several days per component. The cause was not the AI model, but the input it received.",
+      "items": {
+        "structure": {
+          "title": "No structure in Figma.",
+          "text": "Variables and styles were not organised into layers, so it was unclear how values related to each other."
+        },
+        "tokens": {
+          "title": "No token architecture.",
+          "text": "Colours, spacing, and typography were often hard-coded values instead of named tokens."
+        },
+        "values": {
+          "title": "Inconsistent values.",
+          "text": "The same colour or size could appear in several slightly different variants across components."
+        },
+        "links": {
+          "title": "No link between design and code.",
+          "text": "Figma components were not connected to their React counterparts, so AI did not know which code already existed and generated duplicates."
+        }
+      },
+      "outro": "As a result, every AI-generated component had to be reverse-engineered. Developers guessed which token was meant, corrected values, and removed duplication."
+    },
+    "solution": {
+      "title": "Solution",
+      "body": "Together with the designers and backend developers, I set up a process where the design system is the single source of truth for both people and AI.",
+      "items": {
+        "tokens": {
+          "title": "Three-layer token architecture.",
+          "text": "Primitive tokens (raw palette, spacing scale, type scale) → semantic tokens (background, text, and border roles) → component tokens (button background, input border). Designers restructured the Figma file around this model."
+        },
+        "plugin": {
+          "title": "Figma plugin.",
+          "text": "A custom plugin exports the Figma variables as CSS variables into the React monorepo. Backend developers built the plugin; I defined the token structure and output format and integrated the variables into the component library."
+        },
+        "codeConnect": {
+          "title": "Code Connect.",
+          "text": "Figma components are linked to their React implementation, so AI and developers see which component and props already exist."
+        },
+        "library": {
+          "title": "Component library.",
+          "text": "Components are styled with Tailwind CSS and the token variables. Each component is documented in Storybook with all variants and states."
+        },
+        "aiWorkflow": {
+          "title": "AI workflow.",
+          "text": "I set up Claude Code skills, workflows, and agents that read the Figma structure and token layers and produce React components in the project's conventions."
+        },
+        "testing": {
+          "title": "Testing.",
+          "text": "Unit tests with Vitest, end-to-end tests with Playwright, and code review for every AI-generated component."
+        }
+      }
+    },
+    "impact": {
+      "title": "Impact",
+      "items": {
+        "speed": {
+          "title": "Days → hours.",
+          "text": "Measured on the same components: before, AI generation plus two to three days of manual fixes; after, a few hours including review and tests."
+        },
+        "errors": {
+          "title": "Fewer errors.",
+          "text": "Named tokens and component links leave less room for guessing, in AI-generated code and in hand-written code."
+        },
+        "consistency": {
+          "title": "Consistent values.",
+          "text": "One source of truth for colours, spacing, and typography, in Figma and in code."
+        },
+        "reuse": {
+          "title": "Reuse across apps.",
+          "text": "The same components are used across several applications of the platform, in Next.js and in React."
+        },
+        "adoption": {
+          "title": "Adopted by the team.",
+          "text": "Management accepted the proposal, and it became part of the team's process. Designers rebuilt the Figma file around the new structure."
+        }
+      }
+    },
+    "learned": {
+      "title": "What I learned and trade-offs",
+      "items": {
+        "structure": {
+          "title": "Structure matters more than the model.",
+          "text": "The quality of AI-generated code depended far more on how the Figma file and tokens were organised than on the choice of model, prompt, or AI harness."
+        },
+        "investment": {
+          "title": "It is an investment.",
+          "text": "Restructuring the tokens and the Figma file took weeks before the first component benefited. That time had to be planned and defended."
+        },
+        "discipline": {
+          "title": "The system depends on discipline.",
+          "text": "It works only while designers follow the token structure. New values outside the system bring the old problems back."
+        },
+        "review": {
+          "title": "AI code is still reviewed.",
+          "text": "Faster generation did not remove code review and tests. It made them the main place where developers spend their time."
+        }
+      }
+    }
   }
 }

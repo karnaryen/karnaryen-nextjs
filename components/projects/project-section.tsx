@@ -1,5 +1,6 @@
-import { ExternalLink, Lock } from 'lucide-react';
+import { ArrowRight, ExternalLink, Lock } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { TechStack } from '@/components/shared/tech-stack';
@@ -55,6 +56,15 @@ export function ProjectSection({ project, imageLeft }: ProjectSectionProps) {
               {t('confidential')}
             </span>
           )}
+          {project.link === 'caseStudy' && (
+            <Link
+              href={project.href}
+              className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
+            >
+              {t('readCaseStudy')}
+              <ArrowRight data-icon="inline-end" className="size-4" />
+            </Link>
+          )}
           {project.link === 'open' && (
             <a
               href={project.href}
@@ -89,22 +99,24 @@ export function ProjectSection({ project, imageLeft }: ProjectSectionProps) {
             <span className="font-medium text-foreground">{t('techStackLabel')}</span>
             <TechStack ids={project.tech} size="sm" />
           </div>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <span className="font-medium text-foreground">{t('browsersLabel')}</span>
-            <ul className="flex items-center gap-4">
-              {project.browsers.map((browserId) => (
-                <li key={browserId}>
-                  <Image
-                    src={browsers[browserId].icon}
-                    alt={browsers[browserId].name}
-                    width={40}
-                    height={40}
-                    className="size-9 sm:size-10"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+          {project.browsers && (
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <span className="font-medium text-foreground">{t('browsersLabel')}</span>
+              <ul className="flex items-center gap-4">
+                {project.browsers.map((browserId) => (
+                  <li key={browserId}>
+                    <Image
+                      src={browsers[browserId].icon}
+                      alt={browsers[browserId].name}
+                      width={40}
+                      height={40}
+                      className="size-9 sm:size-10"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </section>

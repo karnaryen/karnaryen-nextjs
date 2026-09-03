@@ -2,6 +2,7 @@ import type { StaticImageData } from 'next/image';
 
 import type { BrowserId } from '@/data/browsers';
 import type { TechId } from '@/data/tech-stack';
+import designSystem from '@/public/projects/design-system.webp';
 import earlyMoves from '@/public/projects/early-moves.webp';
 import mmcFlyer from '@/public/projects/mmc-flyer.webp';
 import s2sPlatform from '@/public/projects/s2s-platform.webp';
@@ -24,10 +25,15 @@ export interface ProjectInfo {
   /** Shows the translated ProjectsPage.demoNote line above the image. */
   demoNote?: boolean;
   href: string;
-  link: 'readMore' | 'open';
+  /**
+   * `readMore` and `open` point at an external site; `caseStudy` links to a
+   * page under `/projects/` with the full write-up.
+   */
+  link: 'readMore' | 'open' | 'caseStudy';
   confidential: boolean;
   tech: readonly TechId[];
-  browsers: readonly BrowserId[];
+  /** Omit for work that is not tied to specific browser targets. */
+  browsers?: readonly BrowserId[];
 }
 
 /**
@@ -36,6 +42,14 @@ export interface ProjectInfo {
  * ProjectsPage.projects.<id>, and drop its screenshot in public/projects/.
  */
 export const projects = [
+  {
+    id: 'designSystem',
+    image: designSystem,
+    href: '/projects/design-system',
+    link: 'caseStudy',
+    confidential: true,
+    tech: ['react', 'nextjs', 'figma', 'storybook', 'claudeCode'],
+  },
   {
     id: 'earlyMoves',
     image: earlyMoves,

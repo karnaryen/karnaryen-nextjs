@@ -12,6 +12,7 @@ import { absoluteUrl } from '@/lib/site';
 const STATIC_ROUTES = [
   { path: '/', priority: 1 },
   { path: '/projects', priority: 0.9 },
+  { path: '/projects/design-system', priority: 0.8 },
   { path: '/experience', priority: 0.8 },
   { path: '/blog', priority: 0.8 },
   { path: '/education', priority: 0.6 },
