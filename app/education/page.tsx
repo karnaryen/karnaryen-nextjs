@@ -6,10 +6,15 @@ import { getTranslations } from 'next-intl/server';
 import { CourseCard } from '@/components/course-card';
 import { RevealGrid } from '@/components/reveal-grid';
 import { courses, mainEducation } from '@/data/education';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('EducationPage');
-  return { title: t('title') };
+  return pageMetadata({
+    path: '/education',
+    title: t('title'),
+    description: t('metaDescription'),
+  });
 }
 
 export default function EducationPage() {

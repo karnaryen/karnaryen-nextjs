@@ -6,7 +6,9 @@ import { getFormatter, getLocale, getTranslations } from 'next-intl/server';
 
 import { MdxContent } from '@/components/mdx/mdx-content';
 import { buttonVariants } from '@/components/ui/button';
+import { createPostJsonLd } from '@/data/post-json-ld';
 import { getPost } from '@/lib/blog';
+import { pageMetadata } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 
 interface PostPageProps {
@@ -15,15 +17,24 @@ interface PostPageProps {
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPost(slug, await getLocale());
+  const locale = await getLocale();
+  const post = await getPost(slug, locale);
 
+  // A missing post is a 404; Next resolves that segment's metadata instead.
   if (!post) return {};
-  return { title: post.title, description: post.description };
+
+  return pageMetadata({
+    path: `/blog/${slug}`,
+    title: post.title,
+    description: post.description,
+    article: { publishedTime: post.date || undefined, tags: post.tags },
+  });
 }
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
-  const post = await getPost(slug, await getLocale());
+  const locale = await getLocale();
+  const post = await getPost(slug, locale);
 
   if (!post) notFound();
 
@@ -32,6 +43,10 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(createPostJsonLd(post, locale)) }}
+      />
       <Link href="/blog" className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}>
         <ArrowLeft data-icon="inline-start" className="size-4" />
         {t('backToBlog')}

@@ -7,10 +7,15 @@ import { RevealGrid } from '@/components/reveal-grid';
 import { SelfStudyProjectCard } from '@/components/self-study-project-card';
 import { projects } from '@/data/projects';
 import { selfStudyProjects } from '@/data/self-study-projects';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('ProjectsPage');
-  return { title: t('title') };
+  return pageMetadata({
+    path: '/projects',
+    title: t('title'),
+    description: t('metaDescription'),
+  });
 }
 
 export default function ProjectsPage() {

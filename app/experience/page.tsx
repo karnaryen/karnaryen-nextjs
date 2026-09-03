@@ -7,10 +7,15 @@ import {
   type ExperienceTimelineEntry,
 } from '@/components/experience-timeline';
 import { experienceItems } from '@/data/experience';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('ExperiencePage');
-  return { title: t('title') };
+  return pageMetadata({
+    path: '/experience',
+    title: t('title'),
+    description: t('metaDescription'),
+  });
 }
 
 export default function ExperiencePage() {
