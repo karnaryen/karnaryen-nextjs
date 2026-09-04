@@ -39,7 +39,7 @@
     "photoAlt": "Photo of Natalia Karaseva",
     "intro1": "I have been building production web applications since October 2022: three years of Angular in healthcare, and React and Next.js today. Most of my work starts at a Figma file and ends in production — component architecture, design tokens and a shared UI library, state and API integration, responsive and cross-browser layouts, accessibility, Storybook, and unit and end-to-end tests with Vitest, Cypress, and Playwright. I like taking a feature end to end and shipping it genuinely finished: consistent with the design, true to the requirements, tested, and fast.",
     "intro2": "At Neolook I built the frontend of healthcare software for neonatal and pediatric intensive care, deployed in hospitals including Máxima MC, UMC Utrecht, and UMC Groningen: real-time camera monitoring over Server-Sent Events, multi-person video calls with WebRTC, license-based feature and route protection, Dutch–English localization, and dark mode. Today, at Junior Einstein, I work on a large educational platform for primary schools — not one application, but several connected products on different stacks: a webshop and content pages on Next.js, and the learning environment itself as a React SPA. I build product features and reusable UI components with MUI, shadcn/ui, and Tailwind CSS, keep the interface faithful to the design, and shape the Figma-to-React workflow the team uses to turn designs into components.",
-    "ctaCaseStudies": "View case studies",
+    "ctaCaseStudies": "View my projects",
     "ctaCv": "Download CV",
     "techStackTitle": "Tech stack"
   },
@@ -57,7 +57,7 @@
     "demoNote": "Demo mode: videostreams are replaced with stock videos",
     "projects": {
       "designSystem": {
-        "title": "Junior Einstein Design System",
+        "title": "AI-Powered Figma-to-React Pipeline",
         "imageAlt": "Diagram of the Figma-to-React workflow: a button component matrix in Figma with Code Connect, and the same component in Storybook",
         "summary": "Junior Einstein is an educational web platform for primary schools in the Netherlands. The platform is built on a shared design system and a custom component library that the team develops in-house.",
         "contribution": "Since November 2025 I have been building the component library and product UI in React and TypeScript. When AI-assisted development became a company priority, I looked into why AI-generated components still needed days of manual fixes, and proposed a new Figma-to-React process: a three-layer token architecture, a Figma plugin that exports tokens as CSS variables, and Code Connect. Building a UI component now takes hours instead of days."

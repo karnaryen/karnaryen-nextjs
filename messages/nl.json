@@ -57,7 +57,7 @@
     "demoNote": "Demomodus: videostreams worden vervangen door stockvideo’s.",
     "projects": {
       "designSystem": {
-        "title": "Junior Einstein Design System",
+        "title": "AI-gestuurde Figma-naar-React-pipeline",
         "imageAlt": "Schema van de Figma-naar-React-workflow: een matrix van button-varianten in Figma met Code Connect, en hetzelfde component in Storybook",
         "summary": "Junior Einstein is een online leerplatform voor het basisonderwijs in Nederland. Het platform gebruikt een eigen design system en een eigen componentbibliotheek. Het team bouwt die zelf.",
         "contribution": "Sinds november 2025 bouw ik de componentbibliotheek en de product-UI in React en TypeScript. Toen AI-ondersteund ontwikkelen een prioriteit werd, onderzocht ik waarom AI-componenten nog dagen aan handmatige correcties nodig hadden. Ik stelde een nieuw Figma-naar-React-proces voor: tokens in drie lagen, een Figma-plugin die tokens exporteert als CSS-variabelen, en Code Connect. Een UI-component bouwen kost nu uren in plaats van dagen."

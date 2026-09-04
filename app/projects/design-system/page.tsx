@@ -62,7 +62,7 @@ export default function DesignSystemPage() {
       <article className="mt-8">
         <header className="max-w-3xl">
           <p className="text-sm font-medium text-primary">
-            {t('company')} · {t('jobTitle')} · {t('period')}
+            {t('company')} · {t('jobTitle')}
           </p>
           <h1 className="mt-2 text-3xl font-semibold text-foreground">{t('title')}</h1>
           <span className="mt-4 inline-flex items-center gap-1.5 rounded-4xl bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">

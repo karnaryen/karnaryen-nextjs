@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import type { ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 
 import {
   ExperienceTimeline,
@@ -24,12 +24,12 @@ export async function generateMetadata(): Promise<Metadata> {
  * Bullets may wrap a phrase in `<experiments>…</experiments>` to link to the
  * early experiments on the projects page.
  */
-function renderBullet(line: string): ReactNode {
+function renderBullet(line: string, key: number): ReactNode {
   const [before, label, after] = line.split(/<\/?experiments>/);
   if (label === undefined) return line;
 
   return (
-    <>
+    <Fragment key={key}>
       {before}
       <Link
         href="/projects#early-experiments"
@@ -38,7 +38,7 @@ function renderBullet(line: string): ReactNode {
         {label}
       </Link>
       {after}
-    </>
+    </Fragment>
   );
 }
 
