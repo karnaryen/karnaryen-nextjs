@@ -252,13 +252,13 @@
     "role": {
       "title": "Mijn rol",
       "body": "Ik begon in november 2025 als frontend developer. Mijn hoofdtaak was het bouwen van herbruikbare componenten voor de bibliotheek en van de product-UI.\nDaarnaast nam ik het initiatief voor het Figma-naar-React-proces:",
-      "items": "Ik schreef een rapport over waar de tijd van de frontend developers echt naartoe ging bij AI-componenten.\nIk onderzocht bestaande aanpakken: AI-vriendelijke design systems, token-architecturen en AI-first Figma-naar-code-workflows.\nIk deed experimenten in Figma, in React en met verschillende AI-modellen. Het doel: componenten die in één keer goed zijn.\nIk stelde de nieuwe token-architectuur en workflow voor aan het management en het designteam, en hielp bij de uitvoering."
+      "items": "Ik schreef een rapport over waar de tijd van de frontend developers echt naartoe ging bij AI-componenten.\nIk onderzocht bestaande aanpakken: AI-vriendelijke design systems, token-architecturen en AI-first Figma-naar-code-workflows.\nIk deed experimenten in Figma, in React en met verschillende AI-modellen. Het doel: componenten die in één keer goed zijn.\nIk presenteerde de nieuwe token-architectuur en workflow aan het team, en hielp bij de uitvoering."
     },
     "imageAlt": "Schema van de Figma-naar-React-workflow: een matrix van button-varianten in Figma met Code Connect, en hetzelfde component in Storybook",
     "imageNote": "Illustratie. Schermafbeeldingen van het product zijn vertrouwelijk. De afbeelding toont een mock-up van de workflow.",
     "context": {
       "title": "Context",
-      "body": "Junior Einstein is een online leerplatform voor het basisonderwijs in Nederland. Designers, frontend developers en backend developers werken er samen aan.\nDe designers maakten een design system in Figma. Het frontend-team bouwde daarop een componentbibliotheek in React en TypeScript. De componenten staan in Storybook.\nIn 2025 wilde het management een AI-first bedrijf worden. AI-tools moesten het ontwikkelen sneller maken. Ook het omzetten van Figma-designs naar React-componenten."
+      "body": "Junior Einstein is een online leerplatform voor het basisonderwijs in Nederland. Designers, frontend developers en backend developers werken er samen aan.\nDe designers maakten een design system in Figma. Het frontend-team bouwde daarop een componentbibliotheek in React en TypeScript. De componenten staan in Storybook.\nIn 2025 ging het team AI-tools inzetten om de ontwikkelworkflow te ondersteunen, ook voor het omzetten van Figma-designs naar React-componenten."
     },
     "problem": {
       "title": "Probleem",
@@ -334,7 +334,7 @@
         },
         "adoption": {
           "title": "Overgenomen door het team.",
-          "text": "Het management nam het voorstel over. Het is nu onderdeel van het proces van het team. De designers bouwden het Figma-bestand om naar de nieuwe structuur."
+          "text": "Het voorstel werd overgenomen en is nu onderdeel van het proces van het team. De designers bouwden het Figma-bestand om naar de nieuwe structuur."
         }
       }
     },
