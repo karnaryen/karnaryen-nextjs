@@ -29,7 +29,7 @@ export const personalProjects = [
   {
     id: 'schoolLibrary',
     image: schoolLibrary,
-    href: 'https://biebouders.netlify.app/',
+    href: 'https://biebouders.nl/',
     tech: 'Angular, Firebase',
   },
 ] as const satisfies readonly PersonalProjectInfo[];
