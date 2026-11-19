@@ -45,7 +45,12 @@ export default function ProjectsPage() {
       </h2>
       <div className="mt-8 flex flex-col gap-16 lg:gap-24">
         {projects.map((project, index) => (
-          <ProjectSection key={project.id} project={project} imageLeft={index % 2 === 0} />
+          <ProjectSection
+            key={project.id}
+            project={project}
+            imageLeft={index % 2 === 0}
+            eager={index < 2}
+          />
         ))}
       </div>
 

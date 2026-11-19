@@ -12,9 +12,11 @@ import { cn } from '@/lib/utils';
 interface ProjectSectionProps {
   project: Project;
   imageLeft: boolean;
+  /** Load the main image right away; set for sections visible on first paint. */
+  eager?: boolean;
 }
 
-export function ProjectSection({ project, imageLeft }: ProjectSectionProps) {
+export function ProjectSection({ project, imageLeft, eager = false }: ProjectSectionProps) {
   const t = useTranslations('ProjectsPage');
   const { id } = project;
 
@@ -28,6 +30,7 @@ export function ProjectSection({ project, imageLeft }: ProjectSectionProps) {
           <Image
             src={project.image}
             alt={t(`projects.${id}.imageAlt`)}
+            loading={eager ? 'eager' : undefined}
             sizes="(min-width: 1024px) 45vw, (min-width: 640px) 80vw, 100vw"
             className="w-full rounded-2xl border border-border"
           />
