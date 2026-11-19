@@ -1,8 +1,11 @@
 export interface TechInfo {
   name: string;
-  icon: string;
+  /** Omit for tools without a logo; the badge then shows just the name. */
+  icon?: string;
   /** Monochrome black marks need inverting to stay visible in dark mode. */
   invertOnDark?: boolean;
+  /** Hide from the full stack on the homepage; still usable in project stacks. */
+  projectOnly?: boolean;
 }
 
 /**
@@ -18,6 +21,7 @@ export const tech = {
   typescript: { name: 'TypeScript', icon: '/tech/typescript.svg' },
   tailwind: { name: 'Tailwind CSS', icon: '/tech/tailwind-css.svg' },
   claudeCode: { name: 'Claude Code', icon: '/tech/claude.svg' },
+  claudeDesign: { name: 'Claude Design', icon: '/tech/claude.svg', projectOnly: true },
   openai: { name: 'OpenAI', icon: '/tech/openai.svg', invertOnDark: true },
   html: { name: 'HTML', icon: '/tech/html.svg' },
   css: { name: 'CSS', icon: '/tech/css3.svg' },
@@ -27,8 +31,11 @@ export const tech = {
   figma: { name: 'Figma', icon: '/tech/figma.svg' },
   docker: { name: 'Docker', icon: '/tech/docker.svg' },
   git: { name: 'Git', icon: '/tech/git.svg' },
+  hostnet: { name: 'Hostnet', icon: '/tech/hostnet.png', projectOnly: true },
 } as const satisfies Record<string, TechInfo>;
 
 export type TechId = keyof typeof tech;
 
-export const techStackIds = Object.keys(tech) as TechId[];
+export const techStackIds = (Object.keys(tech) as TechId[]).filter(
+  (id) => !(tech[id] as TechInfo).projectOnly,
+);

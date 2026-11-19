@@ -53,6 +53,7 @@
     "confidential": "Confidential",
     "readMore": "Read more...",
     "open": "Open",
+    "openSite": "Open {site}",
     "techStackLabel": "Tech stack:",
     "browsersLabel": "Developed for browsers:",
     "demoNote": "Demo mode: videostreams are replaced with stock videos",
@@ -80,6 +81,12 @@
         "imageAlt": "Screenshots of the S2S Platform on desktop, tablet, and phone",
         "summary": "Neolook's S2S Platform is a system that brings together video and AI solutions for neonatal and pediatric intensive care (NICU and PICU). It offers different modules with specific goals: S2S Family helps parents stay connected with their child, S2S Professional supports nurses and doctors with clinical monitoring and consultation, and S2S Academic provides tools for clinical research.",
         "contribution": "Over the last three years, I was mainly responsible for developing the frontend of the S2S Platform. My work included implementing new features, pages, and components, ensuring they were responsive and reliable, and making sure the frontend communicated smoothly and effectively with the backend. As the project grew more complex, I also worked on the frontend architecture to make it scalable and maintainable. Among the features I implemented were real-time camera status updates (SSE), grid and list views for camera monitoring (for both nurse stations and care telephones), a web interface for multi-person video calls, feature access and URL protection based on license type (Family, Professional, or Academic), and light/dark modes. I collaborated closely with designers, backend developers, the solution architect, and management, working in sprints with regular demos and sprint planning in Jira."
+      },
+      "remikids": {
+        "title": "Website Redesign for a Remedial Teaching Practice",
+        "imageAlt": "Homepage of the redesigned RemiKids StudieHuis website on desktop and on a phone: a headline, an introduction, and a photo of the remedial teacher at her desk",
+        "summary": "RemiKids StudieHuis is a remedial teaching practice in Haaksbergen, the Netherlands. Its old website was outdated: a wrong address, old services, an outdated menu without a clear structure, empty pages and an inconsistent layout.",
+        "contribution": "After several sessions with the owner, Monique Michorius, about what wasn't working and what she wanted, I redesigned and rebuilt the site in one month in my free time. I showed her a few design prototypes to choose from and reported progress along the way. The result: clear architecture, new navigation, up-to-date texts, privacy policy and general terms, new photos, animation, and a consistent layout that works on mobile."
       }
     },
     "personal": {

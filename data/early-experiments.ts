@@ -1,20 +1,10 @@
-import type { StaticImageData } from 'next/image';
-
+import type { ProjectCardInfo } from '@/data/project-card-info';
 import memoji from '@/public/projects/self-study/memoji.webp';
 import multiLanguage from '@/public/projects/self-study/multi-language.webp';
 import onlineStore from '@/public/projects/self-study/online-store.webp';
 import parallaxTailwind from '@/public/projects/self-study/parallax-tailwind.webp';
 import techBlogVue from '@/public/projects/self-study/tech-blog-vue.webp';
 import ticTacToe from '@/public/projects/self-study/tic-tac-toe.webp';
-
-export interface EarlyExperimentInfo {
-  id: string;
-  image: StaticImageData;
-  /** Internal route (starts with "/") or external URL (opens in a new tab). */
-  href: string;
-  /** Short language-neutral tech list, e.g. "Angular, Firebase". */
-  tech: string;
-}
 
 /**
  * Early experiments shown on /projects, in display order. To add one:
@@ -60,12 +50,8 @@ export const earlyExperiments = [
     href: '/projects/memoji',
     tech: 'React',
   },
-] as const satisfies readonly EarlyExperimentInfo[];
+] as const satisfies readonly ProjectCardInfo[];
 
 export type EarlyExperimentId = (typeof earlyExperiments)[number]['id'];
 
-export type EarlyExperiment = EarlyExperimentInfo & { id: EarlyExperimentId };
-
-export function isExternal(project: EarlyExperimentInfo): boolean {
-  return !project.href.startsWith('/');
-}
+export type EarlyExperiment = ProjectCardInfo & { id: EarlyExperimentId };

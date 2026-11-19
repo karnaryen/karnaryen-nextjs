@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -9,9 +9,13 @@ interface ProjectsTocProps {
   items: { id: string; title: string }[];
 }
 
-/** "On this page" nav for the projects page. Highlights the section in view. */
+/**
+ * "On this page" nav for the projects page. Highlights the section in view.
+ * Its visibility (breakpoint) is set by the parent's CSS only.
+ */
 export function ProjectsToc({ label, items }: ProjectsTocProps) {
   const [activeId, setActiveId] = useState<string | undefined>(items[0]?.id);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const headings = items
@@ -32,17 +36,32 @@ export function ProjectsToc({ label, items }: ProjectsTocProps) {
       setActiveId(current);
     };
 
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    return () => {
+    const listen = () => {
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+    };
+    const unlisten = () => {
       window.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
+    };
+
+    // The page's CSS decides when the nav is shown. While it is hidden
+    // (display: none → zero width), skip the scroll work entirely.
+    const nav = navRef.current;
+    if (!nav) return;
+    const observer = new ResizeObserver(([entry]) =>
+      entry.contentRect.width > 0 ? listen() : unlisten(),
+    );
+    observer.observe(nav);
+    return () => {
+      observer.disconnect();
+      unlisten();
     };
   }, [items]);
 
   return (
-    <nav aria-label={label} className="sticky top-28">
+    <nav ref={navRef} aria-label={label} className="sticky top-28">
       <p className="mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">
         {label}
       </p>

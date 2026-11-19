@@ -1,16 +1,6 @@
-import type { StaticImageData } from 'next/image';
-
+import type { ProjectCardInfo } from '@/data/project-card-info';
 import dutchipedia from '@/public/projects/self-study/dutchipedia.webp';
 import schoolLibrary from '@/public/projects/self-study/school-library.webp';
-
-export interface PersonalProjectInfo {
-  id: string;
-  image: StaticImageData;
-  /** Internal route (starts with "/") or external URL (opens in a new tab). */
-  href: string;
-  /** Short language-neutral tech list, e.g. "Angular, Firebase". */
-  tech: string;
-}
 
 /**
  * Personal projects shown on /projects, in display order. To add one:
@@ -32,12 +22,8 @@ export const personalProjects = [
     href: 'https://biebouders.nl/',
     tech: 'Angular, Firebase',
   },
-] as const satisfies readonly PersonalProjectInfo[];
+] as const satisfies readonly ProjectCardInfo[];
 
 export type PersonalProjectId = (typeof personalProjects)[number]['id'];
 
-export type PersonalProject = PersonalProjectInfo & { id: PersonalProjectId };
-
-export function isExternal(project: PersonalProjectInfo): boolean {
-  return !project.href.startsWith('/');
-}
+export type PersonalProject = ProjectCardInfo & { id: PersonalProjectId };

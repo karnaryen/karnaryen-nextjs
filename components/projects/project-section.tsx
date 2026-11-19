@@ -65,18 +65,21 @@ export function ProjectSection({ project, imageLeft }: ProjectSectionProps) {
               <ArrowRight data-icon="inline-end" className="size-4" />
             </Link>
           )}
-          {project.link === 'open' && (
+        </div>
+
+        {project.link === 'open' && (
+          <div>
             <a
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
             >
-              {t('open')}
+              {t('openSite', { site: new URL(project.href).host })}
               <ExternalLink data-icon="inline-end" className="size-4" />
             </a>
-          )}
-        </div>
+          </div>
+        )}
 
         <p className="leading-relaxed text-muted-foreground">
           {t(`projects.${id}.summary`)}{' '}
@@ -95,10 +98,12 @@ export function ProjectSection({ project, imageLeft }: ProjectSectionProps) {
         <p className="leading-relaxed text-muted-foreground">{t(`projects.${id}.contribution`)}</p>
 
         <div className="flex flex-col gap-4 pt-2">
-          <div className="flex flex-wrap items-end gap-x-5 gap-y-2">
-            <span className="font-medium text-foreground">{t('techStackLabel')}</span>
-            <TechStack ids={project.tech} size="sm" />
-          </div>
+          {project.tech && (
+            <div className="flex flex-wrap items-end gap-x-5 gap-y-2">
+              <span className="font-medium text-foreground">{t('techStackLabel')}</span>
+              <TechStack ids={project.tech} size="sm" />
+            </div>
+          )}
           {project.browsers && (
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
               <span className="font-medium text-foreground">{t('browsersLabel')}</span>

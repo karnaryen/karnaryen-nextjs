@@ -1,17 +1,11 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
-import Image, { type StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { buttonVariants } from '@/components/ui/button';
+import type { ProjectCardInfo } from '@/data/project-card-info';
 import { cn } from '@/lib/utils';
-
-interface ProjectCardInfo {
-  id: string;
-  image: StaticImageData;
-  href: string;
-  tech: string;
-}
 
 interface ProjectCardProps {
   project: ProjectCardInfo;
@@ -27,7 +21,9 @@ export function ProjectCard({ project, translationNamespace, index = 0 }: Projec
   // Keys are validated against messages/en.json via the data files' `id` unions instead.
   const caption = t(`${translationNamespace}.${project.id}.caption` as Parameters<typeof t>[0]);
 
-  const image = <Image src={project.image} alt={caption} className="size-28 rounded-xl object-contain" />;
+  const image = (
+    <Image src={project.image} alt={caption} className="size-28 rounded-xl object-contain" />
+  );
 
   return (
     <article

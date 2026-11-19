@@ -8,7 +8,7 @@ import { ProjectsToc } from '@/components/projects/projects-toc';
 import { RevealGrid } from '@/components/shared/reveal-grid';
 import { earlyExperiments } from '@/data/early-experiments';
 import { personalProjects } from '@/data/personal-projects';
-import { projects } from '@/data/projects';
+import { featuredPersonalProjects, projects } from '@/data/projects';
 import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -55,7 +55,12 @@ export default function ProjectsPage() {
       >
         {t('personalProjects')}
       </h2>
-      <RevealGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-8 flex flex-col gap-16 lg:gap-24">
+        {featuredPersonalProjects.map((project, index) => (
+          <ProjectSection key={project.id} project={project} imageLeft={index % 2 === 0} />
+        ))}
+      </div>
+      <RevealGrid className="mt-16 grid gap-5 sm:grid-cols-2 lg:mt-24 lg:grid-cols-3 xl:grid-cols-4">
         {personalProjects.map((project, index) => (
           <ProjectCard
             key={project.id}

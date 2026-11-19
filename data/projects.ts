@@ -5,6 +5,8 @@ import type { TechId } from '@/data/tech-stack';
 import designSystem from '@/public/projects/design-system.webp';
 import earlyMoves from '@/public/projects/early-moves.webp';
 import mmcFlyer from '@/public/projects/mmc-flyer.webp';
+import remikidsMobile from '@/public/projects/remikids/after-mobile-home.webp';
+import remikids from '@/public/projects/remikids/remikids.webp';
 import s2sPlatform from '@/public/projects/s2s-platform.webp';
 import s2sPlatformFamily from '@/public/projects/s2s-platform-family.webp';
 import s2sPlatformOverview from '@/public/projects/s2s-platform-overview-dark.webp';
@@ -17,29 +19,35 @@ export interface ProjectOverlay {
   className?: string;
 }
 
-export interface ProjectInfo {
+/**
+ * How the project links out. The link kind decides which `href` is allowed:
+ * - `caseStudy` → a page under `/projects/` with the full write-up.
+ * - `readMore` / `open` → an external site, opened in a new tab. `open` names
+ *   the site's host in the button ("Open remikids.nl").
+ */
+export type ProjectLink =
+  | { link: 'caseStudy'; href: `/projects/${string}` }
+  | { link: 'readMore' | 'open'; href: `https://${string}` };
+
+export type ProjectInfo = ProjectLink & {
   id: string;
   image: StaticImageData;
   /** Extra device images stacked on top of the main image. */
   overlays?: readonly ProjectOverlay[];
   /** Shows the translated ProjectsPage.demoNote line above the image. */
   demoNote?: boolean;
-  href: string;
-  /**
-   * `readMore` and `open` point at an external site; `caseStudy` links to a
-   * page under `/projects/` with the full write-up.
-   */
-  link: 'readMore' | 'open' | 'caseStudy';
   confidential: boolean;
-  tech: readonly TechId[];
+  /** Omit when the work was not built with a stack from data/tech-stack.ts. */
+  tech?: readonly TechId[];
   /** Omit for work that is not tied to specific browser targets. */
   browsers?: readonly BrowserId[];
-}
+};
 
 /**
- * Projects shown on /projects, in display order. To add one: append an entry
- * here, add its texts to messages/en.json and messages/nl.json under
- * ProjectsPage.projects.<id>, and drop its screenshot in public/projects/.
+ * Work projects shown on /projects, in display order. To add one: append an
+ * entry here, add its texts to messages/en.json and messages/nl.json under
+ * ProjectsPage.projects.<id>, and drop its screenshot(s) in public/projects/
+ * (a subfolder per project is fine when it has several images).
  */
 export const projects = [
   {
@@ -84,6 +92,30 @@ export const projects = [
   },
 ] as const satisfies readonly ProjectInfo[];
 
-export type ProjectId = (typeof projects)[number]['id'];
+/**
+ * Personal projects that get the same full-width treatment as work projects
+ * (image, write-up, link), shown above the personal project cards.
+ * Texts live under ProjectsPage.projects.<id>, like the work projects.
+ */
+export const featuredPersonalProjects = [
+  {
+    id: 'remikids',
+    image: remikids,
+    overlays: [
+      {
+        image: remikidsMobile,
+        framed: true,
+        className: '-right-3 -bottom-3 max-h-[70%] sm:-right-5',
+      },
+    ],
+    href: 'https://remikids.nl',
+    link: 'open',
+    confidential: false,
+    tech: ['claudeCode', 'claudeDesign', 'hostnet', 'css'],
+  },
+] as const satisfies readonly ProjectInfo[];
+
+export type ProjectId =
+  (typeof projects)[number]['id'] | (typeof featuredPersonalProjects)[number]['id'];
 
 export type Project = ProjectInfo & { id: ProjectId };
