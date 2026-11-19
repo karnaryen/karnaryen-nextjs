@@ -46,6 +46,7 @@
   "ProjectsPage": {
     "title": "Projects",
     "metaDescription": "Frontend case studies by Natalia Karaseva — a React design system and AI-assisted Figma-to-React workflow for an educational platform, healthcare platforms built with Angular and Tailwind CSS for Dutch hospitals, plus personal projects built with Next.js and React.",
+    "onThisPage": "On this page",
     "workProjects": "Work projects",
     "personalProjects": "Personal projects",
     "earlyExperiments": "Early experiments",

@@ -46,6 +46,7 @@
   "ProjectsPage": {
     "title": "Projecten",
     "metaDescription": "Frontend-casestudies van Natalia Karaseva — een React design system en AI-ondersteunde Figma-naar-React-workflow voor een onderwijsplatform, zorgplatforms gebouwd met Angular en Tailwind CSS voor Nederlandse ziekenhuizen, plus persoonlijke projecten met Next.js en React.",
+    "onThisPage": "Op deze pagina",
     "workProjects": "Werkprojecten",
     "personalProjects": "Persoonlijke projecten",
     "earlyExperiments": "Vroege experimenten",

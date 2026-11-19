@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 
 import { ProjectCard } from '@/components/projects/project-card';
 import { ProjectSection } from '@/components/projects/project-section';
+import { ProjectsToc } from '@/components/projects/projects-toc';
 import { RevealGrid } from '@/components/shared/reveal-grid';
 import { earlyExperiments } from '@/data/early-experiments';
 import { personalProjects } from '@/data/personal-projects';
@@ -21,12 +22,25 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ProjectsPage() {
   const t = useTranslations('ProjectsPage');
+  const tocItems = [
+    { id: 'work-projects', title: t('workProjects') },
+    { id: 'personal-projects', title: t('personalProjects') },
+    { id: 'early-experiments', title: t('earlyExperiments') },
+  ];
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
+    <main className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
+      {/* Only wide screens have room for the TOC in the left gutter. */}
+      <aside className="absolute inset-y-0 right-full mr-4 hidden w-44 min-[1600px]:block">
+        <ProjectsToc label={t('onThisPage')} items={tocItems} />
+      </aside>
+
       <h1 className="text-3xl font-semibold text-foreground">{t('title')}</h1>
 
-      <h2 className="mt-10 text-2xl font-semibold text-foreground lg:mt-14">
+      <h2
+        id="work-projects"
+        className="mt-10 scroll-mt-24 text-2xl font-semibold text-foreground lg:mt-14"
+      >
         {t('workProjects')}
       </h2>
       <div className="mt-8 flex flex-col gap-16 lg:gap-24">
@@ -35,12 +49,20 @@ export default function ProjectsPage() {
         ))}
       </div>
 
-      <h2 className="mt-16 text-2xl font-semibold text-foreground lg:mt-24">
+      <h2
+        id="personal-projects"
+        className="mt-16 scroll-mt-24 text-2xl font-semibold text-foreground lg:mt-24"
+      >
         {t('personalProjects')}
       </h2>
       <RevealGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {personalProjects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} translationNamespace="personal" index={index} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            translationNamespace="personal"
+            index={index}
+          />
         ))}
       </RevealGrid>
 
